@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MOPJ-35 | গণিত অলিম্পিয়াড প্রস্তুতি · জুনিয়র</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Page-specific tweaks */
+    .q-intro-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+    .q-intro-list li {
+      background: var(--cream);
+      border-left: 4px solid var(--violet);
+      border-radius: 0 8px 8px 0;
+      padding: 0.9rem 1.2rem;
+      font-family: var(--font-main);
+      font-size: 0.97rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      position: relative;
+    }
+    .q-intro-list li::before {
+      content: attr(data-n);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px; height: 24px;
+      background: var(--violet);
+      color: white;
+      border-radius: 50%;
+      font-size: 0.72rem;
+      font-weight: 700;
+      margin-right: 0.6rem;
+      font-family: var(--font-mono);
+      vertical-align: middle;
+      flex-shrink: 0;
+    }
+    .unlock-notice {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      color: var(--text-muted);
+      font-family: var(--font-main);
+      font-size: 0.95rem;
+    }
+    .unlock-notice .big-lock { font-size: 3rem; margin-bottom: 0.75rem; }
+    .answer-box table {
+      width: 100%; border-collapse: collapse; margin-top: 0.75rem; font-size: 0.88rem;
+    }
+    .answer-box table th {
+      background: rgba(14,124,123,0.12); padding: 0.4rem 0.75rem;
+      text-align: left; font-weight: 700; color: var(--teal);
+      font-family: var(--font-main);
+    }
+    .answer-box table td {
+      padding: 0.35rem 0.75rem; border-bottom: 1px solid rgba(14,124,123,0.1);
+      font-family: var(--font-main);
+    }
+    .answer-box table tr:last-child td { border-bottom: none; }
+    .answer-box .final-ans {
+      background: var(--navy); color: var(--saffron-lt);
+      border-radius: 8px; padding: 0.5rem 1rem;
+      font-family: var(--font-mono); font-size: 1rem;
+      font-weight: 700; display: inline-block; margin-top: 0.5rem;
+    }
+    .ans-step-list {
+      list-style: none; display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.5rem;
+    }
+    .ans-step-list li {
+      display: flex; gap: 0.5rem; align-items: flex-start; font-family: var(--font-main); font-size: 0.92rem;
+    }
+    .ans-step-list .step-num {
+      background: var(--teal); color: white; border-radius: 50%;
+      width: 20px; height: 20px; display: flex; align-items: center; justify-content: center;
+      font-size: 0.68rem; font-weight: 700; flex-shrink: 0; margin-top: 0.15rem;
+      font-family: var(--font-mono);
+    }
+    .print-btn {
+      background: var(--parchment); border: 1.5px solid rgba(15,32,68,0.15);
+      color: var(--text-secondary); padding: 0.4rem 1rem;
+      border-radius: 100px; font-size: 0.82rem; font-weight: 600;
+      cursor: pointer; font-family: var(--font-main);
+      transition: all var(--transition); margin-left: auto; display: block;
+    }
+    .print-btn:hover { background: var(--navy); color: white; }
+  </style>
+</head>
+<body>
+
+<!-- ── Site Header ─────────────────────────────────────────── -->
+<header class="site-header">
+  <div class="logo">Mojaru <span>Olympiad</span></div>
+  <nav>
+    <a href="index.html">← সব পরীক্ষা</a>
+    <button class="print-btn" onclick="window.print()">🖨️ প্রিন্ট</button>
+  </nav>
+</header>
+
+<!-- ── Main ────────────────────────────────────────────────── -->
+<main class="page-container">
+
+  <!-- Exam Hero -->
+  <div class="exam-hero">
+    <div class="badge">📐 গণিত অলিম্পিয়াড প্রস্তুতি</div>
+    <h1>অগ্রগতি পরীক্ষা · Mojaru MOPJ-35</h1>
+    <div class="topic-tags">
+      <span class="topic-tag">📊 গড়</span>
+      <span class="topic-tag">➗ বিভাজ্যতা</span>
+      <span class="topic-tag">🔢 সংখ্যাতত্ত্ব</span>
+      <span class="topic-tag">🏅 জুনিয়র স্তর</span>
+    </div>
+    <div class="meta-row">
+      <div class="meta-item"><span class="icon">📝</span> Test No: 01</div>
+      <div class="meta-item"><span class="icon">⭐</span> পূর্ণমান: ৩০</div>
+      <div class="meta-item"><span class="icon">⏱️</span> সময়:৬০ মিনিট</div>
+      <div class="meta-item"><span class="icon">📅</span> তারিখ: ০৭-০৫-২০২৬</div>
+    </div>
+  </div>
+
+  <!-- Answer Lock Banner -->
+  <div class="answer-lock-banner" id="lockBanner">
+    <div class="lock-icon-wrap" id="lockIcon">🔒</div>
+    <div class="lock-text">
+      <h3 id="lockTitle">উত্তর এখনো লক আছে</h3>
+      <p id="lockDesc">৭ মে ২০২৬, রাত ১০:০০-এর পরে উত্তর স্বয়ংক্রিয়ভাবে প্রকাশিত হবে।</p>
+    </div>
+    <div class="countdown-display">
+      <div class="countdown-label">বাকি সময়</div>
+      <div class="countdown-time" id="countdown">--:--:--</div>
+    </div>
+  </div>
+
+  <!-- Student Info -->
+  <div class="student-card">
+    <h3>📋 পরীক্ষার্থীর তথ্য</h3>
+    <div class="student-info-grid">
+      <div class="info-field">
+        <label>নাম</label>
+        <input class="field-line" type="text" placeholder="তোমার নাম লেখো…" />
+      </div>
+      <div class="info-field">
+        <label>শ্রেণি</label>
+        <input class="field-line" type="text" placeholder="শ্রেণি" />
+      </div>
+      <div class="info-field">
+        <label>তারিখ</label>
+        <input class="field-line" type="text" value="০৭-০৫-২০২৬" readonly />
+      </div>
+    </div>
+  </div>
+
+  <!-- Instructions -->
+  <div class="instructions-box">
+    <h3>📌 নির্দেশনা</h3>
+    <ol>
+      <li>সব প্রশ্নের উত্তর দাও। প্রতিটি প্রশ্নের নম্বর বরাদ্দ পাশে দেওয়া আছে।</li>
+      <li>কাজ দেখাও — শুধু উত্তর লিখলে নম্বর কাটা যাবে।</li>
+      <li>পরিষ্কার ও সুন্দর করে লেখো।</li>
+      <li>পরীক্ষা শেষ হওয়ার পর রাত ১০:০০-এর পরে উত্তর দেখতে পারবে।</li>
+    </ol>
+  </div>
+
+  <!-- ── Section 1: Short Questions ─────────────────────────── -->
+  <div class="section-card">
+    <div class="section-title">১। সংক্ষিপ্ত প্রশ্নের উত্তর দাও</div>
+
+    <!-- Q 1.1 -->
+    <div class="question q-violet">
+      <div class="q-header">
+        <span class="q-number">১</span>
+        <p class="q-text">
+          <strong>০</strong> একটি কেমন সংখ্যা?
+          <br><small style="color:var(--text-muted);">(জোড়/বিজোড়, মৌলিক/যৌগিক, স্বাভাবিক সংখ্যা কিনা — ব্যাখ্যাসহ)</small>
+        </p>
+        <span class="q-marks">১ নম্বর</span>
+      </div>
+      <div class="answer-section" id="ans-section-1-1">
+        <div class="unlock-notice" id="lock-1-1">
+          <div class="big-lock">🔒</div>
+          উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে
+        </div>
+        <div class="answer-box" id="ans-1-1">
+          <div class="ans-label">✅ উত্তর</div>
+          <ul class="ans-step-list">
+            <li><span class="step-num">১</span><span><strong>জোড়/বিজোড়:</strong> ০ একটি <strong>জোড়</strong> সংখ্যা, কারণ ০ = 2 × 0 — অর্থাৎ ২ দিয়ে বিভাজ্য।</span></li>
+            <li><span class="step-num">২</span><span><strong>মৌলিক/যৌগিক:</strong> ০ <strong>মৌলিক নয়</strong> এবং <strong>যৌগিকও নয়</strong>। কারণ মৌলিক সংখ্যার জন্য ঠিক দুটি ভাজক থাকতে হয়, কিন্তু ০-এর অসীম ভাজক আছে (যেকোনো সংখ্যা দিয়ে ভাগ করা যায় না — 0÷0 অনির্ধারিত)।</span></li>
+            <li><span class="step-num">৩</span><span><strong>স্বাভাবিক সংখ্যা:</strong> ০ <strong>স্বাভাবিক সংখ্যা নয়</strong>। স্বাভাবিক সংখ্যা শুরু হয় ১ থেকে। তবে ০ একটি <strong>পূর্ণ সংখ্যা</strong> (whole number)।</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q 1.2 -->
+    <div class="question q-teal">
+      <div class="q-header">
+        <span class="q-number">২</span>
+        <p class="q-text">
+          <strong>মূলদ ও অমূলদ সংখ্যার মধ্যে পার্থক্য কী?</strong> একটি করে উদাহরণ দাও।
+        </p>
+        <span class="q-marks">১ নম্বর</span>
+      </div>
+      <div class="answer-section">
+        <div class="unlock-notice" id="lock-1-2">
+          <div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে
+        </div>
+        <div class="answer-box" id="ans-1-2">
+          <div class="ans-label">✅ উত্তর</div>
+          <table>
+            <tr><th>মূলদ সংখ্যা</th><th>অমূলদ সংখ্যা</th></tr>
+            <tr><td>p/q আকারে লেখা যায় (q≠0, p,q পূর্ণ সংখ্যা)</td><td>p/q আকারে লেখা <strong>যায় না</strong></td></tr>
+            <tr><td>দশমিক শেষ হয় বা পুনরাবৃত্তি হয়</td><td>দশমিক অনন্ত ও অপুনরাবৃত্তি</td></tr>
+            <tr><td>উদাহরণ: <span class="math-step">3/4 = 0.75</span></td><td>উদাহরণ: <span class="math-step">√2 ≈ 1.41421…</span></td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q 1.3 -->
+    <div class="question q-green">
+      <div class="q-header">
+        <span class="q-number">৩</span>
+        <p class="q-text">
+          <strong>৭ থেকে ২৩ পর্যন্ত</strong> (উভয় প্রান্তসহ) কতটি বিজোড় সংখ্যা আছে?
+        </p>
+        <span class="q-marks">১ নম্বর</span>
+      </div>
+      <div class="answer-section">
+        <div class="unlock-notice" id="lock-1-3"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-1-3">
+          <div class="ans-label">✅ উত্তর</div>
+          <p>বিজোড় সংখ্যাগুলো: <span class="math-step">7, 9, 11, 13, 15, 17, 19, 21, 23</span></p>
+          <p>সূত্র: সংখ্যা = <span class="math-step">(শেষ − শুরু) ÷ 2 + 1 = (23 − 7) ÷ 2 + 1 = 8 + 1 = 9</span></p>
+          <div class="final-ans">মোট: ৯টি বিজোড় সংখ্যা</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q 1.4 -->
+    <div class="question q-rose">
+      <div class="q-header">
+        <span class="q-number">৪</span>
+        <p class="q-text">
+          <strong>২৫৭</strong> সংখ্যাটি মৌলিক নাকি যৌগিক? কারণ দেখাও।
+        </p>
+        <span class="q-marks">১ নম্বর</span>
+      </div>
+      <div class="answer-section">
+        <div class="unlock-notice" id="lock-1-4"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-1-4">
+          <div class="ans-label">✅ উত্তর</div>
+          <p>√257 ≈ 16.03 → তাই 2 থেকে 16 পর্যন্ত মৌলিক সংখ্যা দিয়ে পরীক্ষা করি:</p>
+          <ul class="ans-step-list">
+            <li><span class="step-num">✗</span><span>2 দিয়ে? 257 বিজোড় → না</span></li>
+            <li><span class="step-num">✗</span><span>3 দিয়ে? 2+5+7=14, 3 দিয়ে বিভাজ্য নয়</span></li>
+            <li><span class="step-num">✗</span><span>5 দিয়ে? শেষ অঙ্ক 7 → না</span></li>
+            <li><span class="step-num">✗</span><span>7 দিয়ে? 257÷7 = 36 বাকি 5 → না</span></li>
+            <li><span class="step-num">✗</span><span>11 দিয়ে? 257÷11 = 23 বাকি 4 → না</span></li>
+            <li><span class="step-num">✗</span><span>13 দিয়ে? 257÷13 = 19 বাকি 10 → না</span></li>
+          </ul>
+          <div class="final-ans">✅ ২৫৭ একটি মৌলিক সংখ্যা</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q 1.5 -->
+    <div class="question q-gold">
+      <div class="q-header">
+        <span class="q-number">৫</span>
+        <p class="q-text">
+          <strong>ভারযুক্ত গড়, জ্যামিতিক গড় এবং হারমোনিক গড়ের সূত্র লেখো।</strong>
+        </p>
+        <span class="q-marks">১ নম্বর</span>
+      </div>
+      <div class="answer-section">
+        <div class="unlock-notice" id="lock-1-5"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-1-5">
+          <div class="ans-label">✅ উত্তর</div>
+          <ul class="ans-step-list">
+            <li><span class="step-num">ভা</span><span><strong>ভারযুক্ত গড়:</strong> <span class="math-step">W̄ = (w₁x₁ + w₂x₂ + … + wₙxₙ) / (w₁ + w₂ + … + wₙ)</span></span></li>
+            <li><span class="step-num">জ্যা</span><span><strong>জ্যামিতিক গড়:</strong> <span class="math-step">G = (x₁ · x₂ · … · xₙ)^(1/n)</span></span></li>
+            <li><span class="step-num">হা</span><span><strong>হারমোনিক গড়:</strong> <span class="math-step">H = n / (1/x₁ + 1/x₂ + … + 1/xₙ)</span></span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider" />
+
+  <!-- ── Q2 ──────────────────────────────────────────────────── -->
+  <div class="section-card">
+    <div class="section-title">২। বিভাজ্যতা পরীক্ষা <span style="font-size:0.85rem;color:var(--text-muted);font-family:var(--font-main);font-weight:400;">[৫ নম্বর]</span></div>
+    <div class="question">
+      <div class="q-header">
+        <span class="q-number">২</span>
+        <p class="q-text">
+          <strong>৬৬০</strong> সংখ্যাটি ১ থেকে ১২ পর্যন্ত কোন কোন সংখ্যা দ্বারা বিভাজ্য? সম্পূর্ণ কারণসহ দেখাও।
+        </p>
+        <span class="q-marks">৫ নম্বর</span>
+      </div>
+      <div class="answer-section">
+        <div class="unlock-notice" id="lock-2"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-2">
+          <div class="ans-label">✅ উত্তর</div>
+          <p>প্রথমে মৌলিক গুণনীয়ক: <span class="math-step">660 = 2² × 3 × 5 × 11</span></p>
+          <table>
+            <tr><th>ভাজক</th><th>বিভাজ্য?</th><th>কারণ</th></tr>
+            <tr><td>1</td><td>✅ হ্যাঁ</td><td>সব সংখ্যা 1 দ্বারা বিভাজ্য</td></tr>
+            <tr><td>2</td><td>✅ হ্যাঁ</td><td>শেষ অঙ্ক 0 → জোড়</td></tr>
+            <tr><td>3</td><td>✅ হ্যাঁ</td><td>6+6+0=12, 12÷3=4 ✓</td></tr>
+            <tr><td>4</td><td>✅ হ্যাঁ</td><td>শেষ দুই অঙ্ক 60÷4=15 ✓</td></tr>
+            <tr><td>5</td><td>✅ হ্যাঁ</td><td>শেষ অঙ্ক 0 ✓</td></tr>
+            <tr><td>6</td><td>✅ হ্যাঁ</td><td>2 ও 3 উভয় দ্বারা বিভাজ্য ✓</td></tr>
+            <tr><td>7</td><td>❌ না</td><td>660÷7 = 94 বাকি 2</td></tr>
+            <tr><td>8</td><td>❌ না</td><td>শেষ তিন অঙ্ক 660÷8 = 82.5 ✗</td></tr>
+            <tr><td>9</td><td>❌ না</td><td>অঙ্কের যোগ 12, 12÷9 ভাগ হয় না</td></tr>
+            <tr><td>10</td><td>✅ হ্যাঁ</td><td>শেষ অঙ্ক 0 ✓</td></tr>
+            <tr><td>11</td><td>✅ হ্যাঁ</td><td>660÷11=60 ✓</td></tr>
+            <tr><td>12</td><td>✅ হ্যাঁ</td><td>3 ও 4 উভয় দ্বারা বিভাজ্য ✓</td></tr>
+          </table>
+          <div class="final-ans">বিভাজ্য: 1, 2, 3, 4, 5, 6, 10, 11, 12 → মোট ৯টি</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Q3 ──────────────────────────────────────────────────── -->
+  <div class="section-card">
+    <div class="section-title">৩। গণনা সমস্যা <span style="font-size:0.85rem;color:var(--text-muted);font-family:var(--font-main);font-weight:400;">[৫ নম্বর]</span></div>
+    <div class="question q-teal">
+      <div class="q-header">
+        <span class="q-number">৩</span>
+        <p class="q-text">
+          <strong>২০০০ থেকে ২০২৬ পর্যন্ত</strong> কতটি সংখ্যা ৫ দ্বারা বিভাজ্য কিন্তু ৪ দ্বারা বিভাজ্য নয়?
+        </p>
+        <span class="q-marks">৫ নম্বর</span>
+      </div>
+      <div class="answer-section">
+        <div class="unlock-notice" id="lock-3"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-3">
+          <div class="ans-label">✅ উত্তর</div>
+          <ul class="ans-step-list">
+            <li><span class="step-num">১</span><span>২০০০–২০২৬-এ ৫ দ্বারা বিভাজ্য: <span class="math-step">2000, 2005, 2010, 2015, 2020, 2025</span> → ৬টি</span></li>
+            <li><span class="step-num">২</span><span>এর মধ্যে ২০ দ্বারাও বিভাজ্য (৫ ও ৪ উভয়): <span class="math-step">2000, 2020</span> → ২টি</span></li>
+            <li><span class="step-num">৩</span><span>৫ দ্বারা বিভাজ্য কিন্তু ৪ দ্বারা নয়: <span class="math-step">6 − 2 = 4</span></span></li>
+          </ul>
+          <p>সেগুলো: <span class="math-step">2005, 2010, 2015, 2025</span></p>
+          <div class="final-ans">উত্তর: ৪টি</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Q4 ──────────────────────────────────────────────────── -->
+  <div class="section-card">
+    <div class="section-title">৪। ভারযুক্ত গড় <span style="font-size:0.85rem;color:var(--text-muted);font-family:var(--font-main);font-weight:400;">[৫ নম্বর]</span></div>
+    <div class="question q-violet">
+      <div class="q-header">
+        <span class="q-number">৪</span>
+        <p class="q-text">
+          রাহেলা তিনটি পরীক্ষায় নিচের নম্বর পেয়েছে:<br>
+          <strong>গণিত (ভার ৩): ৮৫ | বিজ্ঞান (ভার ২): ৭৮ | বাংলা (ভার ১): ৯২</strong><br>
+          তার ভারযুক্ত গড় নম্বর কত? শুধু গাণিতিক গড় নিলে কত হতো? দুটির মধ্যে পার্থক্য হওয়ার কারণ ব্যাখ্যা করো।
+        </p>
+        <span class="q-marks">৫ নম্বর</span>
+      </div>
+      <div class="answer-section">
+        <div class="unlock-notice" id="lock-4"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-4">
+          <div class="ans-label">✅ উত্তর</div>
+          <ul class="ans-step-list">
+            <li><span class="step-num">১</span><span><strong>ভারযুক্ত গড়:</strong><br>
+              <span class="math-step">= (3×85 + 2×78 + 1×92) / (3+2+1)</span><br>
+              <span class="math-step">= (255 + 156 + 92) / 6</span><br>
+              <span class="math-step">= 503 / 6 ≈ 83.83</span>
+            </span></li>
+            <li><span class="step-num">২</span><span><strong>গাণিতিক গড়:</strong><br>
+              <span class="math-step">= (85 + 78 + 92) / 3 = 255 / 3 = 85</span>
+            </span></li>
+            <li><span class="step-num">৩</span><span><strong>পার্থক্যের কারণ:</strong> ভারযুক্ত গড়ে গণিতকে ৩ গুণ বেশি গুরুত্ব দেওয়া হয়েছে। গণিতে নম্বর ৮৫ যা বাংলার ৯২-এর চেয়ে কম, তাই ভারযুক্ত গড় গাণিতিক গড়ের চেয়ে কম হয়েছে।</span></li>
+          </ul>
+          <div class="final-ans">ভারযুক্ত গড় ≈ ৮৩.৮৩ | গাণিতিক গড় = ৮৫</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Q5 ──────────────────────────────────────────────────── -->
+  <div class="section-card">
+    <div class="section-title">৫। গড় সংশোধন <span style="font-size:0.85rem;color:var(--text-muted);font-family:var(--font-main);font-weight:400;">[৫ নম্বর]</span></div>
+    <div class="question q-rose">
+      <div class="q-header">
+        <span class="q-number">৫</span>
+        <p class="q-text">
+          একটি ক্লাসের <strong>৩০ জন ছাত্রের গণিতে গড় নম্বর ছিল ৭২।</strong><br>
+          পরে দেখা গেল — একজনের নম্বর <strong>৩৬</strong> এর বদলে <strong>৬৩</strong> হওয়া উচিত ছিল এবং আরেকজনের <strong>৫৪</strong> এর বদলে <strong>৪৫</strong> হওয়া উচিত।<br>
+          সঠিক গড় নম্বর কত? এবং সঠিক গড় আগের চেয়ে বাড়লো না কমলো?
+        </p>
+        <span class="q-marks">৫ নম্বর</span>
+      </div>
+      <div class="answer-section">
+        <div class="unlock-notice" id="lock-5"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-5">
+          <div class="ans-label">✅ উত্তর</div>
+          <ul class="ans-step-list">
+            <li><span class="step-num">১</span><span>মোট ভুল নম্বর: <span class="math-step">30 × 72 = 2160</span></span></li>
+            <li><span class="step-num">২</span><span>নম্বরের পরিবর্তন:
+              <span class="math-step">+27 (36→63)</span> এবং <span class="math-step">−9 (54→45)</span>
+              → মোট পরিবর্তন = <span class="math-step">+27 − 9 = +18</span></span></li>
+            <li><span class="step-num">৩</span><span>সঠিক মোট: <span class="math-step">2160 + 18 = 2178</span></span></li>
+            <li><span class="step-num">৪</span><span>সঠিক গড়: <span class="math-step">2178 ÷ 30 = 72.6</span></span></li>
+          </ul>
+          <div class="final-ans">সঠিক গড় = ৭২.৬ → গড় বেড়েছে (৭২ → ৭২.৬)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Q6 ──────────────────────────────────────────────────── -->
+  <div class="section-card">
+    <div class="section-title">৬। পরপর জোড় সংখ্যা <span style="font-size:0.85rem;color:var(--text-muted);font-family:var(--font-main);font-weight:400;">[৫ নম্বর]</span></div>
+    <div class="question q-green">
+      <div class="q-header">
+        <span class="q-number">৬</span>
+        <p class="q-text">
+          আমি পরপর পাঁচটি জোড় সংখ্যার কথা ভাবছি। তাদের <strong>গড় ৩৪</strong>, এবং সবচেয়ে বড় সংখ্যাটি সবচেয়ে ছোটটির চেয়ে <strong>ঠিক ৮ বেশি।</strong>
+        </p>
+        <span class="q-marks">৫ নম্বর</span>
+      </div>
+      <ul class="sub-questions" style="margin: 0 1.5rem 1rem;">
+        <li><span class="sub-label">(ক)</span><span>পাঁচটি সংখ্যা কী কী?</span></li>
+        <li><span class="sub-label">(খ)</span><span>এই পাঁচটি সংখ্যার মধ্যে কতটি ৬ দ্বারা বিভাজ্য?</span></li>
+        <li><span class="sub-label">(গ)</span><span>পাঁচটি সংখ্যার গুণফল কি ৯ দ্বারা বিভাজ্য হবে? কারণ দেখাও।</span></li>
+      </ul>
+      <div class="answer-section" style="margin: 0 1.5rem 1rem;">
+        <div class="unlock-notice" id="lock-6"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-6">
+          <div class="ans-label">✅ উত্তর</div>
+          <p><strong>(ক)</strong> ধরি ছোট সংখ্যা = n। পরপর পাঁচটি জোড়: n, n+2, n+4, n+6, n+8</p>
+          <ul class="ans-step-list">
+            <li><span class="step-num">i</span><span>বড় − ছোট = 8 ✓ (n+8 − n = 8) — শর্ত পূরণ হয়</span></li>
+            <li><span class="step-num">ii</span><span>গড় = (5n + 20) / 5 = n + 4 = 34 → <span class="math-step">n = 30</span></span></li>
+            <li><span class="step-num">iii</span><span>সংখ্যাগুলো: <span class="math-step">30, 32, 34, 36, 38</span></span></li>
+          </ul>
+          <div class="final-ans">(ক) ৩০, ৩২, ৩৪, ৩৬, ৩৮</div>
+          <br>
+          <p><strong>(খ)</strong> ৬ দ্বারা বিভাজ্য হতে হলে ২ ও ৩ উভয় দ্বারা বিভাজ্য হতে হবে:</p>
+          <ul class="ans-step-list">
+            <li><span class="step-num">✓</span><span>30 ÷ 6 = 5 → বিভাজ্য</span></li>
+            <li><span class="step-num">✗</span><span>32 ÷ 6 = 5 বাকি 2 → নয়</span></li>
+            <li><span class="step-num">✗</span><span>34 ÷ 6 = 5 বাকি 4 → নয়</span></li>
+            <li><span class="step-num">✓</span><span>36 ÷ 6 = 6 → বিভাজ্য</span></li>
+            <li><span class="step-num">✗</span><span>38 ÷ 6 = 6 বাকি 2 → নয়</span></li>
+          </ul>
+          <div class="final-ans">(খ) ২টি সংখ্যা (৩০ ও ৩৬)</div>
+          <br>
+          <p><strong>(গ)</strong> গুণফল = 30 × 32 × 34 × 36 × 38</p>
+          <ul class="ans-step-list">
+            <li><span class="step-num">১</span><span>36 = 4 × 9, তাই 36 নিজেই 9 দ্বারা বিভাজ্য</span></li>
+            <li><span class="step-num">২</span><span>যেকোনো সংখ্যার গুণফলে যদি একটি উৎপাদক 9 দ্বারা বিভাজ্য হয়, তবে গুণফলও 9 দ্বারা বিভাজ্য।</span></li>
+          </ul>
+          <div class="final-ans">(গ) হ্যাঁ, গুণফল ৯ দ্বারা বিভাজ্য — কারণ ৩৬ = ৯×৪ উৎপাদক হিসেবে আছে।</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Marks Distribution -->
+  <div class="section-card" style="animation-delay:0.4s">
+    <div class="section-title">নম্বর বিভাজন</div>
+    <table class="marks-table">
+      <thead><tr><th>প্রশ্ন</th><th>বিষয়</th><th>নম্বর</th></tr></thead>
+      <tbody>
+        <tr><td>১ (ক–ঙ)</td><td>সংক্ষিপ্ত প্রশ্নোত্তর</td><td>৫</td></tr>
+        <tr><td>২</td><td>বিভাজ্যতা পরীক্ষা</td><td>৫</td></tr>
+        <tr><td>৩</td><td>গণনা সমস্যা</td><td>৫</td></tr>
+        <tr><td>৪</td><td>ভারযুক্ত গড়</td><td>৫</td></tr>
+        <tr><td>৫</td><td>গড় সংশোধন</td><td>৫</td></tr>
+        <tr><td>৬ (ক–গ)</td><td>পরপর জোড় সংখ্যা</td><td>৫</td></tr>
+        <tr style="font-weight:700;"><td colspan="2">মোট</td><td>৩০</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</main>
+
+<!-- ── Footer ───────────────────────────────────────────────── -->
+<footer class="site-footer">
+  <p><strong>Mojaru Math Olympiad Prep</strong> · MOPJ-35 · জুনিয়র স্তর</p>
+  <p style="margin-top:0.3rem;font-size:0.8rem;">© ২০২৬ Mojaru · শিক্ষার্থীদের জন্য তৈরি</p>
+</footer>
+
+<!-- ── Countdown + Answer Reveal Script ─────────────────────── -->
+<script>
+  // Unlock date/time: 7 May 2026, 10:00 PM Bangladesh Time (UTC+6)
+  // UTC equivalent: 7 May 2026, 16:00 UTC
+  const UNLOCK_DATE = new Date('2026-05-07T22:00:00+06:00');
+
+  const lockBanner     = document.getElementById('lockBanner');
+  const lockIcon       = document.getElementById('lockIcon');
+  const lockTitle      = document.getElementById('lockTitle');
+  const lockDesc       = document.getElementById('lockDesc');
+  const countdownEl    = document.getElementById('countdown');
+
+  const answerIds = ['1-1','1-2','1-3','1-4','1-5','2','3','4','5','6'];
+
+  function pad(n){ return String(n).padStart(2,'0'); }
+
+  function revealAllAnswers() {
+    answerIds.forEach(id => {
+      const lockEl = document.getElementById(`lock-${id}`);
+      const ansEl  = document.getElementById(`ans-${id}`);
+      if (lockEl) lockEl.style.display = 'none';
+      if (ansEl)  ansEl.classList.add('visible');
+    });
+  }
+
+  function updateCountdown() {
+    const now  = new Date();
+    const diff = UNLOCK_DATE - now;
+
+    if (diff <= 0) {
+      // Unlocked!
+      countdownEl.textContent = '✅ খোলা হয়েছে';
+      lockBanner.classList.add('unlocked');
+      lockIcon.textContent  = '🔓';
+      lockTitle.textContent = 'উত্তর প্রকাশিত হয়েছে!';
+      lockDesc.textContent  = '৭ মে ২০২৬, রাত ১০:০০-এর পরে উত্তর খোলা হয়েছে।';
+      document.querySelector('.countdown-display').style.background = 'rgba(255,255,255,0.15)';
+      revealAllAnswers();
+      clearInterval(timer);
+      return;
+    }
+
+    const hours   = Math.floor(diff / 3_600_000);
+    const minutes = Math.floor((diff % 3_600_000) / 60_000);
+    const seconds = Math.floor((diff % 60_000) / 1_000);
+
+    if (hours >= 24) {
+      const days = Math.floor(hours / 24);
+      const hrs  = hours % 24;
+      countdownEl.textContent = `${days}d ${pad(hrs)}:${pad(minutes)}:${pad(seconds)}`;
+    } else {
+      countdownEl.textContent = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+    }
+  }
+
+  // Run immediately then every second
+  updateCountdown();
+  const timer = setInterval(updateCountdown, 1000);
+</script>
+
+</body>
+</html>

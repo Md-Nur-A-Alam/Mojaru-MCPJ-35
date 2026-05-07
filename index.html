@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecting...</title>
+
+    <!-- Auto Redirect -->
+    <meta http-equiv="refresh" content="3;url=MOPJ-35.html" />
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white;
+            overflow: hidden;
+        }
+
+        .container{
+            text-align: center;
+            background: rgba(255,255,255,0.08);
+            padding: 50px 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            width: 90%;
+            max-width: 500px;
+            animation: fadeIn 1s ease;
+        }
+
+        .logo{
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+
+        h1{
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        p{
+            font-size: 1rem;
+            color: #d1d5db;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .loader{
+            width: 60px;
+            height: 60px;
+            border: 5px solid rgba(255,255,255,0.2);
+            border-top: 5px solid #38bdf8;
+            border-radius: 50%;
+            margin: auto;
+            animation: spin 1s linear infinite;
+        }
+
+        .redirect-link{
+            display: inline-block;
+            margin-top: 25px;
+            text-decoration: none;
+            color: #38bdf8;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .redirect-link:hover{
+            color: #7dd3fc;
+        }
+
+        @keyframes spin{
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes fadeIn{
+            from{
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to{
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="logo">🎓</div>
+
+        <h1>Academic Portal</h1>
+
+        <p>
+            You are being redirected to the examination page.
+            Please wait a few seconds...
+        </p>
+
+        <div class="loader"></div>
+
+        <a href="MOPJ-35.html" class="redirect-link">
+            Click here if you are not redirected automatically
+        </a>
+    </div>
+
+</body>
+</html>
