@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MOPJ-36 | গণিত অলিম্পিয়াড প্রস্তুতি · সমান্তর ও গুণোত্তর ধারা</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* page-specific */
+    .q-intro-list {
+      list-style: none; display: flex; flex-direction: column; gap: 0.9rem;
+      margin-top: 0.5rem;
+    }
+    .q-intro-list li {
+      background: var(--cream); border-left: 4px solid var(--violet);
+      border-radius: 0 8px 8px 0; padding: 0.75rem 1rem;
+      font-size: 0.93rem; color: var(--text-secondary); line-height: 1.7;
+      display: flex; align-items: flex-start; gap: 0.65rem;
+    }
+    .q-intro-list li .part {
+      font-family: var(--font-mono); font-size: 0.72rem; font-weight: 800;
+      background: var(--violet); color: white; border-radius: 50%;
+      width: 22px; height: 22px; min-width: 22px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 0.15rem;
+    }
+    .fill-blank {
+      display: inline-block;
+      border-bottom: 2px solid var(--navy);
+      min-width: 120px; height: 1.2em;
+      margin: 0 0.2em;
+      vertical-align: bottom;
+    }
+    .answer-box table {
+      width: 100%; border-collapse: collapse; margin-top: 0.75rem; font-size: 0.88rem;
+    }
+    .answer-box table th {
+      background: rgba(14,124,123,0.12); padding: 0.4rem 0.75rem;
+      text-align: left; font-weight: 700; color: var(--teal);
+    }
+    .answer-box table td {
+      padding: 0.35rem 0.75rem; border-bottom: 1px solid rgba(14,124,123,0.1);
+    }
+    .answer-box table tr:last-child td { border-bottom: none; }
+    .gp-box {
+      background: var(--navy); color: var(--saffron-lt);
+      border-radius: 8px; padding: 0.6rem 1.1rem;
+      font-family: var(--font-mono); font-size: 0.9rem; font-weight: 700;
+      display: inline-block; margin: 0.3rem 0;
+    }
+    .hint-box {
+      background: var(--teal-lt); border: 1px solid rgba(14,124,123,0.2);
+      border-radius: 8px; padding: 0.6rem 1rem; margin-top: 0.5rem;
+      font-size: 0.85rem; color: var(--teal); font-style: italic;
+    }
+    .print-btn {
+      background: var(--parchment); border: 1.5px solid rgba(15,32,68,0.15);
+      color: var(--text-secondary); padding: 0.4rem 1rem;
+      border-radius: 100px; font-size: 0.82rem; font-weight: 600;
+      cursor: pointer; font-family: var(--font-main);
+      transition: all var(--transition); margin-left: auto; display: block;
+    }
+    .print-btn:hover { background: var(--navy); color: white; }
+  </style>
+</head>
+<body>
+
+<!-- ── Site Header ──────────────────────────────────── -->
+<header class="site-header">
+  <div class="logo">Mojaru <span>Olympiad</span></div>
+  <nav>
+    <a href="index.html">← সব পরীক্ষা</a>
+    <button class="print-btn" onclick="window.print()">🖨️ প্রিন্ট</button>
+  </nav>
+</header>
+
+<!-- ── Main ────────────────────────────────────────── -->
+<main class="page-container">
+
+  <!-- Exam Hero -->
+  <div class="exam-hero">
+    <div class="badge">📐 গণিত অলিম্পিয়াড প্রস্তুতি</div>
+    <h1>অগ্রগতি পরীক্ষা · Mojaru MOPJ-36</h1>
+    <div class="topic-tags">
+      <span class="topic-tag">📈 সমান্তর ধারা (AP)</span>
+      <span class="topic-tag">✖️ গুণোত্তর ধারা (GP)</span>
+      <span class="topic-tag">🔢 বিশেষ ধারা</span>
+      <span class="topic-tag">💡 সৃজনশীল সমস্যা</span>
+      <span class="topic-tag">🏅 জুনিয়র স্তর</span>
+    </div>
+    <div class="meta-row">
+      <div class="meta-item"><span class="icon">📝</span> Test No: 02</div>
+      <div class="meta-item"><span class="icon">⭐</span> পূর্ণমান: ৩০</div>
+      <div class="meta-item"><span class="icon">⏱️</span> সময়: ৬০ মিনিট</div>
+      <div class="meta-item"><span class="icon">📅</span> তারিখ: ১৮-০৬-২০২৬</div>
+    </div>
+  </div>
+
+  <!-- Answer Lock Banner -->
+  <div class="answer-lock-banner" id="lockBanner">
+    <div class="lock-icon-wrap" id="lockIcon">🔒</div>
+    <div class="lock-text">
+      <h3 id="lockTitle">উত্তর এখনো লক আছে</h3>
+      <p id="lockDesc">১৮ জুন ২০২৬, রাত ১০:০০-এর পরে উত্তর স্বয়ংক্রিয়ভাবে প্রকাশিত হবে।</p>
+    </div>
+    <div class="countdown-display">
+      <div class="countdown-label">বাকি সময়</div>
+      <div class="countdown-time" id="countdown">--:--:--</div>
+    </div>
+  </div>
+
+  <!-- Student Info -->
+  <div class="student-card">
+    <h3>📋 পরীক্ষার্থীর তথ্য</h3>
+    <div class="student-info-grid">
+      <div class="info-field">
+        <label>নাম</label>
+        <input class="field-line" type="text" placeholder="তোমার নাম লেখো…" />
+      </div>
+      <div class="info-field">
+        <label>শ্রেণি</label>
+        <input class="field-line" type="text" placeholder="শ্রেণি" />
+      </div>
+      <div class="info-field">
+        <label>তারিখ</label>
+        <input class="field-line" type="text" value="১৮-০৬-২০২৬" readonly />
+      </div>
+    </div>
+  </div>
+
+  <!-- Instructions -->
+  <div class="instructions-box">
+    <h3>📌 নির্দেশনা</h3>
+    <ol>
+      <li>সব প্রশ্নের উত্তর দাও। প্রতিটি প্রশ্নের নম্বর বরাদ্দ পাশে দেওয়া আছে।</li>
+      <li>কাজ দেখাও — শুধু উত্তর লিখলে নম্বর কাটা যাবে।</li>
+      <li>পরিষ্কার ও সুন্দর করে লেখো।</li>
+      <li>পরীক্ষা শেষ হওয়ার পর রাত ১০:০০-এর পরে উত্তর দেখতে পারবে।</li>
+    </ol>
+  </div>
+
+  <!-- ── Q1: শূন্যস্থান পূরণ ──────────────────────────── -->
+  <div class="section-card">
+    <div class="section-title">১। শূন্যস্থান পূরণ করো <span style="font-size:0.82rem;color:var(--text-muted);font-family:var(--font-main);font-weight:400;">[৫ × ১ = ৫ নম্বর]</span></div>
+
+    <ul class="q-intro-list">
+      <li>
+        <span class="part">ক</span>
+        <span>সমান্তর ধারায় প্রতিটি পদের পার্থক্যকে <span class="fill-blank"></span> বলে।</span>
+      </li>
+      <li>
+        <span class="part">খ</span>
+        <span>ধারা 2, 4, 8, 16, … একটি <span class="fill-blank"></span> ধারা।</span>
+      </li>
+      <li>
+        <span class="part">গ</span>
+        <span>সমান্তর ধারার n তম পদ = <span class="fill-blank"></span>।</span>
+      </li>
+      <li>
+        <span class="part">ঘ</span>
+        <span>গুণোত্তর ধারায় সাধারণ অনুপাত r = <span class="fill-blank"></span>।</span>
+      </li>
+      <li>
+        <span class="part">ঙ</span>
+        <span>ধারা 3, 7, 11, 15, 19, … -এর ১০ম পদ হলো <span class="fill-blank"></span>।</span>
+      </li>
+    </ul>
+
+    <div class="answer-section" style="margin-top:1rem;">
+      <div class="unlock-notice" id="lock-1">
+        <div class="big-lock">🔒</div>
+        উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে
+      </div>
+      <div class="answer-box" id="ans-1">
+        <div class="ans-label">✅ উত্তর</div>
+        <ul class="ans-step-list">
+          <li><span class="step-num">ক</span><span><strong>সাধারণ অন্তর (Common Difference)</strong> — প্রতিটি পদের পার্থক্যকে সাধারণ অন্তর বলে।</span></li>
+          <li><span class="step-num">খ</span><span><strong>গুণোত্তর (Geometric)</strong> ধারা — প্রতিটি পদ আগের পদের ২ গুণ।</span></li>
+          <li><span class="step-num">গ</span><span><strong>a + (n − 1)d</strong> — যেখানে a = প্রথম পদ, d = সাধারণ অন্তর।</span></li>
+          <li><span class="step-num">ঘ</span><span><strong>r = aₙ / aₙ₋₁</strong> — যেকোনো পদকে তার আগের পদ দিয়ে ভাগ করলে সাধারণ অনুপাত পাওয়া যায়।</span></li>
+          <li><span class="step-num">ঙ</span><span><span class="math-step">a=3, d=4; T₁₀ = 3 + (10−1)×4 = 3 + 36 = <strong>39</strong></span></span></li>
+        </ul>
+        <div class="final-ans">ক: সাধারণ অন্তর &nbsp;|&nbsp; খ: গুণোত্তর &nbsp;|&nbsp; গ: a+(n-1)d &nbsp;|&nbsp; ঘ: aₙ/aₙ₋₁ &nbsp;|&nbsp; ঙ: ৩৯</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider" />
+
+  <!-- ── Q2: সমান্তর ধারা ──────────────────────────── -->
+  <div class="section-card">
+    <div class="section-title">২। নিচের সমান্তর ধারাটি লক্ষ করো <span style="font-size:0.82rem;color:var(--text-muted);font-family:var(--font-main);font-weight:400;">[৬ নম্বর]</span></div>
+
+    <div class="question q-teal">
+      <div class="q-header">
+        <span class="q-number">২</span>
+        <p class="q-text">
+          <strong style="font-family:var(--font-mono);font-size:1.05rem;">7, 13, 19, 25, 31, …</strong>
+        </p>
+        <span class="q-marks">৬ নম্বর</span>
+      </div>
+    </div>
+
+    <ul class="sub-questions">
+      <li><span class="sub-label">(ক)</span><span>ধারাটির প্রথম পদ a এবং সাধারণ অন্তর d নির্ণয় করো।</span><span style="margin-left:auto;font-size:0.78rem;color:var(--text-muted);">(২)</span></li>
+      <li><span class="sub-label">(খ)</span><span>ধারাটির ১৫তম পদ নির্ণয় করো।</span><span style="margin-left:auto;font-size:0.78rem;color:var(--text-muted);">(২)</span></li>
+      <li><span class="sub-label">(গ)</span><span>ধারাটির কোন পদের মান ১৬৯?</span><span style="margin-left:auto;font-size:0.78rem;color:var(--text-muted);">(২)</span></li>
+    </ul>
+
+    <div class="answer-section">
+      <div class="unlock-notice" id="lock-2"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+      <div class="answer-box" id="ans-2">
+        <div class="ans-label">✅ উত্তর</div>
+
+        <p><strong>(ক)</strong></p>
+        <ul class="ans-step-list">
+          <li><span class="step-num">১</span><span>প্রথম পদ: <span class="math-step">a = 7</span></span></li>
+          <li><span class="step-num">২</span><span>সাধারণ অন্তর: <span class="math-step">d = 13 − 7 = 6</span></span></li>
+        </ul>
+        <div class="final-ans">a = ৭, d = ৬</div>
+        <br>
+        <p><strong>(খ)</strong></p>
+        <ul class="ans-step-list">
+          <li><span class="step-num">১</span><span>n তম পদের সূত্র: <span class="math-step">Tₙ = a + (n−1)d</span></span></li>
+          <li><span class="step-num">২</span><span><span class="math-step">T₁₅ = 7 + (15−1) × 6 = 7 + 84 = 91</span></span></li>
+        </ul>
+        <div class="final-ans">১৫তম পদ = ৯১</div>
+        <br>
+        <p><strong>(গ)</strong></p>
+        <ul class="ans-step-list">
+          <li><span class="step-num">১</span><span><span class="math-step">Tₙ = 169 হলে: 7 + (n−1)×6 = 169</span></span></li>
+          <li><span class="step-num">২</span><span><span class="math-step">(n−1)×6 = 162 → n−1 = 27 → n = 28</span></span></li>
+        </ul>
+        <div class="final-ans">২৮তম পদের মান ১৬৯</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Q3: গুণোত্তর ধারা (GP) ───────────────────── -->
+  <div class="section-card">
+    <div class="section-title">৩। গুণোত্তর ধারা (GP) সংক্রান্ত সমস্যা <span style="font-size:0.82rem;color:var(--text-muted);font-family:var(--font-main);font-weight:400;">[৭ নম্বর]</span></div>
+
+    <div class="question q-violet">
+      <div class="q-header">
+        <span class="q-number">৩</span>
+        <p class="q-text">
+          <em>একটি গুণোত্তর ধারার <strong>৪র্থ পদ = ১৬</strong> এবং <strong>৬ষ্ঠ পদ = ৬৪।</strong></em>
+        </p>
+        <span class="q-marks">৭ নম্বর</span>
+      </div>
+    </div>
+
+    <ul class="sub-questions">
+      <li><span class="sub-label">(ক)</span><span>ধারাটির প্রথম পদ a এবং ধ্রুব (সাধারণ) অনুপাত r বের করো।</span><span style="margin-left:auto;font-size:0.78rem;color:var(--text-muted);">(৩)</span></li>
+      <li><span class="sub-label">(খ)</span><span>ধারাটির n তম পদের সূত্রটি লেখো।</span><span style="margin-left:auto;font-size:0.78rem;color:var(--text-muted);">(২)</span></li>
+      <li><span class="sub-label">(গ)</span><span>ধারাটির ৮ম পদ বের করো এবং দেখাও যে তা ৪র্থ পদের কত গুণ।</span><span style="margin-left:auto;font-size:0.78rem;color:var(--text-muted);">(২)</span></li>
+    </ul>
+
+    <div class="answer-section">
+      <div class="unlock-notice" id="lock-3"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+      <div class="answer-box" id="ans-3">
+        <div class="ans-label">✅ উত্তর</div>
+
+        <p><strong>(ক)</strong></p>
+        <ul class="ans-step-list">
+          <li><span class="step-num">১</span><span>GP-তে: <span class="math-step">T₄ = ar³ = 16</span> এবং <span class="math-step">T₆ = ar⁵ = 64</span></span></li>
+          <li><span class="step-num">২</span><span>ভাগ করলে: <span class="math-step">ar⁵ / ar³ = 64/16 → r² = 4 → r = 2</span></span></li>
+          <li><span class="step-num">৩</span><span>a বের করি: <span class="math-step">a × 2³ = 16 → 8a = 16 → a = 2</span></span></li>
+        </ul>
+        <div class="final-ans">a = ২, r = ২</div>
+        <br>
+        <p><strong>(খ)</strong></p>
+        <ul class="ans-step-list">
+          <li><span class="step-num">১</span><span>GP-র n তম পদের সূত্র: <span class="math-step">Tₙ = arⁿ⁻¹</span></span></li>
+          <li><span class="step-num">২</span><span>এই ধারার জন্য: <span class="math-step">Tₙ = 2 × 2ⁿ⁻¹ = 2ⁿ</span></span></li>
+        </ul>
+        <div class="final-ans">Tₙ = 2ⁿ</div>
+        <br>
+        <p><strong>(গ)</strong></p>
+        <ul class="ans-step-list">
+          <li><span class="step-num">১</span><span><span class="math-step">T₈ = 2⁸ = 256</span></span></li>
+          <li><span class="step-num">২</span><span>৪র্থ পদ: <span class="math-step">T₄ = 16</span></span></li>
+          <li><span class="step-num">৩</span><span><span class="math-step">T₈ / T₄ = 256 / 16 = 16</span> → ৮ম পদ, ৪র্থ পদের <strong>১৬ গুণ</strong></span></li>
+        </ul>
+        <div class="final-ans">T₈ = ২৫৬, যা T₄ এর ১৬ গুণ</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Q4: বিশেষ ধারা ────────────────────────────── -->
+  <div class="section-card">
+    <div class="section-title">৪। নিচের বিশেষ ধারাটি লক্ষ করো <span style="font-size:0.82rem;color:var(--text-muted);font-family:var(--font-main);font-weight:400;">[৬ নম্বর]</span></div>
+
+    <div class="question q-green">
+      <div class="q-header">
+        <span class="q-number">৪</span>
+        <p class="q-text">
+          <strong style="font-family:var(--font-mono);font-size:1.05rem;">2, 5, 10, 17, 26, 37, …</strong>
+        </p>
+        <span class="q-marks">৬ নম্বর</span>
+      </div>
+    </div>
+
+    <ul class="sub-questions">
+      <li><span class="sub-label">(ক)</span><span>ধারাটির পরবর্তী দুটি পদ লেখো।</span><span style="margin-left:auto;font-size:0.78rem;color:var(--text-muted);">(২)</span></li>
+      <li><span class="sub-label">(খ)</span><span>ধারাটির n তম পদের সূত্রটি বের করো।</span><span style="margin-left:auto;font-size:0.78rem;color:var(--text-muted);">(২)</span></li>
+      <li><span class="sub-label">(গ)</span><span>ধারাটির ১০তম পদের মান নির্ণয় করো এবং সূত্রের সাহায্যে যাচাই করো।</span><span style="margin-left:auto;font-size:0.78rem;color:var(--text-muted);">(২)</span></li>
+    </ul>
+    <div class="hint-box">💡 ইঙ্গিত: প্রতিটি পদকে n² + 1 আকারে প্রকাশের চেষ্টা করো।</div>
+
+    <div class="answer-section" style="margin-top:0.75rem;">
+      <div class="unlock-notice" id="lock-4"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+      <div class="answer-box" id="ans-4">
+        <div class="ans-label">✅ উত্তর</div>
+
+        <p><strong>(ক)</strong></p>
+        <ul class="ans-step-list">
+          <li><span class="step-num">১</span><span>পদের পার্থক্য: 3, 5, 7, 9, 11, … (বিজোড় সংখ্যার ক্রম) — পরের পার্থক্য ১৩ ও ১৫</span></li>
+          <li><span class="step-num">২</span><span><span class="math-step">37 + 13 = 50</span> এবং <span class="math-step">50 + 15 = 65</span></span></li>
+        </ul>
+        <div class="final-ans">পরবর্তী দুটি পদ: ৫০ ও ৬৫</div>
+        <br>
+        <p><strong>(খ)</strong></p>
+        <ul class="ans-step-list">
+          <li><span class="step-num">১</span><span>ইঙ্গিত অনুসরণ করে: n=1→2, n=2→5, n=3→10, n=4→17, n=5→26</span></li>
+          <li><span class="step-num">২</span><span><span class="math-step">1²+1=2 ✓, 2²+1=5 ✓, 3²+1=10 ✓, 4²+1=17 ✓, 5²+1=26 ✓</span></span></li>
+        </ul>
+        <div class="final-ans">Tₙ = n² + 1</div>
+        <br>
+        <p><strong>(গ)</strong></p>
+        <ul class="ans-step-list">
+          <li><span class="step-num">১</span><span>সূত্র দিয়ে: <span class="math-step">T₁₀ = 10² + 1 = 100 + 1 = 101</span></span></li>
+          <li><span class="step-num">২</span><span>যাচাই: পার্থক্যের ধারা ধরে এগিয়ে গেলেও ১০ম পদ = ১০১।</span></li>
+        </ul>
+        <div class="final-ans">১০ম পদ = ১০১</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Q5: বিশ্লেষণধর্মী সৃজনশীল সমস্যা ─────────── -->
+  <div class="section-card">
+    <div class="section-title">৫। বিশ্লেষণধর্মী সৃজনশীল সমস্যা <span style="font-size:0.82rem;color:var(--text-muted);font-family:var(--font-main);font-weight:400;">[৬ নম্বর]</span></div>
+
+    <div class="question q-rose">
+      <div class="q-header">
+        <span class="q-number">৫</span>
+        <p class="q-text">
+          <em>একজন ব্যবসায়ী প্রথম মাসে <strong>৫,০০০ টাকা</strong> সঞ্চয় করেন। প্রতি মাসে তার সঞ্চয় আগের মাসের তুলনায় <strong>৪০০ টাকা</strong> বাড়তে থাকে।</em>
+        </p>
+        <span class="q-marks">৬ নম্বর</span>
+      </div>
+    </div>
+
+    <ul class="sub-questions">
+      <li><span class="sub-label">(ক)</span><span>ব্যবসায়ীর মাসিক সঞ্চয়গুলো কি সমান্তর ধারা গঠন করে? উত্তরের সপক্ষে যুক্তি দাও।</span><span style="margin-left:auto;font-size:0.78rem;color:var(--text-muted);">(২)</span></li>
+      <li><span class="sub-label">(খ)</span><span>তিনি ১২তম মাসে সর্বমোট কত টাকা সঞ্চয় করবেন?</span><span style="margin-left:auto;font-size:0.78rem;color:var(--text-muted);">(২)</span></li>
+      <li><span class="sub-label">(গ)</span><span>দুই বছরে (অর্থাৎ ২৪ মাসে) তার মোট জমানো বা সঞ্চিত টাকার পরিমাণ কত হবে?</span><span style="margin-left:auto;font-size:0.78rem;color:var(--text-muted);">(২)</span></li>
+    </ul>
+
+    <div class="answer-section">
+      <div class="unlock-notice" id="lock-5"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+      <div class="answer-box" id="ans-5">
+        <div class="ans-label">✅ উত্তর</div>
+
+        <p><strong>(ক)</strong></p>
+        <ul class="ans-step-list">
+          <li><span class="step-num">১</span><span>মাসিক সঞ্চয়: <span class="math-step">5000, 5400, 5800, 6200, …</span></span></li>
+          <li><span class="step-num">২</span><span>প্রতিটি পদের পার্থক্য সমান: <span class="math-step">5400−5000 = 400 = 5800−5400 ✓</span></span></li>
+          <li><span class="step-num">৩</span><span>সুতরাং এটি <strong>সমান্তর ধারা</strong> — a = 5000, d = 400।</span></li>
+        </ul>
+        <div class="final-ans">হ্যাঁ, সমান্তর ধারা (d = ৪০০)</div>
+        <br>
+        <p><strong>(খ)</strong></p>
+        <ul class="ans-step-list">
+          <li><span class="step-num">১</span><span>১২তম মাসের সঞ্চয়: <span class="math-step">T₁₂ = 5000 + (12−1) × 400</span></span></li>
+          <li><span class="step-num">২</span><span><span class="math-step">= 5000 + 4400 = 9,400 টাকা</span></span></li>
+        </ul>
+        <div class="final-ans">১২তম মাসে সঞ্চয় = ৯,৪০০ টাকা</div>
+        <br>
+        <p><strong>(গ)</strong></p>
+        <ul class="ans-step-list">
+          <li><span class="step-num">১</span><span>সমান্তর ধারার যোগফলের সূত্র: <span class="math-step">Sₙ = n/2 × [2a + (n−1)d]</span></span></li>
+          <li><span class="step-num">২</span><span><span class="math-step">S₂₄ = 24/2 × [2×5000 + (24−1)×400]</span></span></li>
+          <li><span class="step-num">৩</span><span><span class="math-step">= 12 × [10000 + 9200]</span></span></li>
+          <li><span class="step-num">৪</span><span><span class="math-step">= 12 × 19200 = 2,30,400 টাকা</span></span></li>
+        </ul>
+        <div class="final-ans">২৪ মাসে মোট সঞ্চয় = ২,৩০,৪০০ টাকা</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Marks Table ────────────────────────────────── -->
+  <div class="section-card" style="animation-delay:0.4s">
+    <div class="section-title">নম্বর বিভাজন</div>
+    <table class="marks-table">
+      <thead><tr><th>প্রশ্ন</th><th>বিষয়</th><th>নম্বর</th></tr></thead>
+      <tbody>
+        <tr><td>১ (ক–ঙ)</td><td>শূন্যস্থান পূরণ</td><td>৫</td></tr>
+        <tr><td>২ (ক–গ)</td><td>সমান্তর ধারা বিশ্লেষণ</td><td>৬</td></tr>
+        <tr><td>৩ (ক–গ)</td><td>গুণোত্তর ধারা (GP)</td><td>৭</td></tr>
+        <tr><td>৪ (ক–গ)</td><td>বিশেষ ধারা (n²+1)</td><td>৬</td></tr>
+        <tr><td>৫ (ক–গ)</td><td>সৃজনশীল সমস্যা (সঞ্চয়)</td><td>৬</td></tr>
+        <tr style="font-weight:700;"><td colspan="2">মোট</td><td>৩০</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</main>
+
+<!-- ── Footer ─────────────────────────────────────── -->
+<footer class="site-footer">
+  <p><strong>Mojaru Math Olympiad Prep</strong> · MOPJ-36 · জুনিয়র স্তর</p>
+  <p style="margin-top:0.3rem;font-size:0.8rem;">© ২০২৬ Mojaru · শিক্ষার্থীদের জন্য তৈরি</p>
+</footer>
+
+<!-- ── Countdown + Unlock Script ─────────────────────── -->
+<script>
+  // Unlock: 18 June 2026, 10:00 PM Bangladesh Time (UTC+6)
+  const UNLOCK_DATE = new Date('2026-06-18T22:00:00+06:00');
+
+  const lockBanner  = document.getElementById('lockBanner');
+  const lockIcon    = document.getElementById('lockIcon');
+  const lockTitle   = document.getElementById('lockTitle');
+  const lockDesc    = document.getElementById('lockDesc');
+  const countdownEl = document.getElementById('countdown');
+
+  const answerIds = ['1','2','3','4','5'];
+
+  function pad(n){ return String(n).padStart(2,'0'); }
+
+  function revealAllAnswers() {
+    answerIds.forEach(id => {
+      const lockEl = document.getElementById(`lock-${id}`);
+      const ansEl  = document.getElementById(`ans-${id}`);
+      if (lockEl) lockEl.style.display = 'none';
+      if (ansEl)  ansEl.classList.add('visible');
+    });
+  }
+
+  function updateCountdown() {
+    const now  = new Date();
+    const diff = UNLOCK_DATE - now;
+
+    if (diff <= 0) {
+      countdownEl.textContent = '✅ খোলা হয়েছে';
+      lockBanner.classList.add('unlocked');
+      lockIcon.textContent  = '🔓';
+      lockTitle.textContent = 'উত্তর প্রকাশিত হয়েছে!';
+      lockDesc.textContent  = '১৮ জুন ২০২৬, রাত ১০:০০-এর পরে উত্তর খোলা হয়েছে।';
+      revealAllAnswers();
+      clearInterval(timer);
+      return;
+    }
+
+    const hours   = Math.floor(diff / 3_600_000);
+    const minutes = Math.floor((diff % 3_600_000) / 60_000);
+    const seconds = Math.floor((diff % 60_000) / 1_000);
+
+    if (hours >= 24) {
+      const days = Math.floor(hours / 24);
+      countdownEl.textContent = `${days}d ${pad(hours%24)}:${pad(minutes)}:${pad(seconds)}`;
+    } else {
+      countdownEl.textContent = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+    }
+  }
+
+  updateCountdown();
+  const timer = setInterval(updateCountdown, 1000);
+</script>
+
+</body>
+</html>

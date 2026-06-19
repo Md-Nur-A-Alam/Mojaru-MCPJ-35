@@ -1,119 +1,364 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Redirecting...</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mojaru Olympiad — পরীক্ষা বেছে নাও</title>
+  <style>
+    /* ── Tokens ──────────────────────────────────────── */
+    :root {
+      --navy:       #0f2044;
+      --navy-mid:   #162c5a;
+      --teal:       #0e7c7b;
+      --teal-lt:    #e6f4f4;
+      --violet:     #5b3fd6;
+      --violet-lt:  #ede9fc;
+      --rose:       #c0384b;
+      --gold:       #c48a00;
+      --saffron-lt: #ffe9a0;
+      --cream:      #f8f7f3;
+      --parchment:  #f0ede5;
+      --text-main:  #1a1a2e;
+      --text-muted: #7b7d99;
+      --radius:     16px;
+      --transition: 0.22s ease;
+      --font:       'Noto Serif Bengali', 'SolaimanLipi', Georgia, serif;
+      --mono:       'JetBrains Mono', 'Fira Code', monospace;
+    }
 
-    <!-- Auto Redirect -->
-    <meta http-equiv="refresh" content="3;url=MOPJ-35.html" />
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        }
+    body {
+      font-family: var(--font);
+      background: var(--cream);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-        body{
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #0f172a, #1e293b);
-            color: white;
-            overflow: hidden;
-        }
+    /* ── Header ─────────────────────────────────────── */
+    .site-header {
+      background: var(--navy);
+      padding: 0.85rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .logo { font-size: 1.25rem; font-weight: 800; color: white; }
+    .logo span { color: #38bdf8; }
+    .header-meta { font-size: 0.78rem; color: rgba(255,255,255,0.5); font-family: var(--mono); }
 
-        .container{
-            text-align: center;
-            background: rgba(255,255,255,0.08);
-            padding: 50px 40px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            width: 90%;
-            max-width: 500px;
-            animation: fadeIn 1s ease;
-        }
+    /* ── Hero ───────────────────────────────────────── */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #1a3a6e 60%, #0e7c7b 100%);
+      padding: 3.5rem 2rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 40%, rgba(91,63,214,0.25) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 100px; padding: 0.3rem 1rem;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em;
+      color: var(--saffron-lt); margin-bottom: 1.1rem; text-transform: uppercase;
+    }
+    .hero h1 {
+      font-size: clamp(1.75rem, 5vw, 2.6rem);
+      font-weight: 800; color: white; line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+    .hero p {
+      font-size: 1rem; color: rgba(255,255,255,0.7);
+      max-width: 520px; margin: 0 auto 2rem; line-height: 1.7;
+    }
+    .hero-stats {
+      display: flex; justify-content: center; flex-wrap: wrap;
+      gap: 1.5rem; margin-top: 1.5rem;
+    }
+    .stat {
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 10px; padding: 0.6rem 1.2rem; text-align: center;
+    }
+    .stat .val { font-size: 1.4rem; font-weight: 800; color: var(--saffron-lt); font-family: var(--mono); }
+    .stat .lbl { font-size: 0.72rem; color: rgba(255,255,255,0.6); margin-top: 0.1rem; }
 
-        .logo{
-            font-size: 60px;
-            margin-bottom: 15px;
-        }
+    /* ── Main content ───────────────────────────────── */
+    .main { flex: 1; max-width: 900px; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; width: 100%; }
 
-        h1{
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
+    /* ── Section heading ────────────────────────────── */
+    .section-heading {
+      display: flex; align-items: center; gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .section-heading h2 { font-size: 1.25rem; font-weight: 800; color: var(--navy); }
+    .section-heading .line {
+      flex: 1; height: 2px;
+      background: linear-gradient(to right, var(--parchment), transparent);
+    }
+    .section-heading .count-badge {
+      background: var(--navy); color: white;
+      font-size: 0.72rem; font-weight: 700; font-family: var(--mono);
+      border-radius: 100px; padding: 0.2rem 0.65rem;
+    }
 
-        p{
-            font-size: 1rem;
-            color: #d1d5db;
-            margin-bottom: 25px;
-            line-height: 1.6;
-        }
+    /* ── Exam Cards Grid ────────────────────────────── */
+    .exams-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.25rem;
+    }
 
-        .loader{
-            width: 60px;
-            height: 60px;
-            border: 5px solid rgba(255,255,255,0.2);
-            border-top: 5px solid #38bdf8;
-            border-radius: 50%;
-            margin: auto;
-            animation: spin 1s linear infinite;
-        }
+    .exam-card {
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(15,32,68,0.09);
+      transition: transform var(--transition), box-shadow var(--transition);
+      display: flex; flex-direction: column;
+      text-decoration: none; color: inherit;
+      position: relative;
+    }
+    .exam-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(15,32,68,0.15);
+    }
+    .exam-card:hover .card-arrow { transform: translateX(4px); }
 
-        .redirect-link{
-            display: inline-block;
-            margin-top: 25px;
-            text-decoration: none;
-            color: #38bdf8;
-            font-weight: 600;
-            transition: 0.3s;
-        }
+    /* colour accent strip at top */
+    .exam-card .card-strip {
+      height: 5px;
+    }
+    .card-strip.teal   { background: linear-gradient(90deg, var(--teal), #38bdf8); }
+    .card-strip.violet { background: linear-gradient(90deg, var(--violet), #a78bfa); }
 
-        .redirect-link:hover{
-            color: #7dd3fc;
-        }
+    .card-body { padding: 1.4rem 1.5rem; flex: 1; display: flex; flex-direction: column; gap: 0.85rem; }
 
-        @keyframes spin{
-            100%{
-                transform: rotate(360deg);
-            }
-        }
+    .card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; }
 
-        @keyframes fadeIn{
-            from{
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to{
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
+    .test-badge {
+      font-family: var(--mono); font-size: 0.7rem; font-weight: 800;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      border-radius: 6px; padding: 0.25rem 0.65rem;
+      flex-shrink: 0;
+    }
+    .test-badge.teal   { background: var(--teal-lt); color: var(--teal); }
+    .test-badge.violet { background: var(--violet-lt); color: var(--violet); }
+
+    .status-pill {
+      font-size: 0.7rem; font-weight: 700; border-radius: 100px;
+      padding: 0.22rem 0.7rem; flex-shrink: 0; display: flex; align-items: center; gap: 0.3rem;
+    }
+    .status-pill.open   { background: #d1fae5; color: #047857; }
+    .status-pill.locked { background: #fef3c7; color: #92400e; }
+
+    .card-title { font-size: 1.05rem; font-weight: 800; color: var(--navy); line-height: 1.3; }
+    .card-subtitle { font-size: 0.83rem; color: var(--text-muted); }
+
+    .topic-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .chip {
+      font-size: 0.73rem; font-weight: 600;
+      border-radius: 6px; padding: 0.2rem 0.55rem;
+      border: 1px solid;
+    }
+    .chip.teal   { background: var(--teal-lt);   color: var(--teal);   border-color: rgba(14,124,123,0.2); }
+    .chip.violet { background: var(--violet-lt); color: var(--violet); border-color: rgba(91,63,214,0.2); }
+    .chip.gold   { background: #fdf5e0; color: var(--gold); border-color: rgba(196,138,0,0.2); }
+    .chip.rose   { background: #fdeaec; color: var(--rose); border-color: rgba(192,56,75,0.2); }
+    .chip.green  { background: #e7f6ee; color: #1e7f4e; border-color: rgba(30,127,78,0.2); }
+
+    .card-meta {
+      display: flex; flex-wrap: wrap; gap: 0.6rem;
+      border-top: 1px solid var(--parchment); padding-top: 0.85rem; margin-top: auto;
+    }
+    .meta-chip {
+      display: flex; align-items: center; gap: 0.3rem;
+      font-size: 0.77rem; color: var(--text-muted);
+    }
+
+    .card-cta {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.85rem 1.5rem;
+      background: var(--cream);
+      border-top: 1px solid var(--parchment);
+    }
+    .cta-label { font-size: 0.85rem; font-weight: 700; }
+    .cta-label.teal   { color: var(--teal); }
+    .cta-label.violet { color: var(--violet); }
+    .card-arrow {
+      font-size: 1.1rem; transition: transform var(--transition);
+    }
+
+    /* ── Coming-soon placeholder ────────────────────── */
+    .exam-card.coming-soon {
+      opacity: 0.6; cursor: not-allowed; pointer-events: none;
+    }
+    .exam-card.coming-soon:hover { transform: none; box-shadow: 0 2px 12px rgba(15,32,68,0.09); }
+
+    /* ── Info bar ───────────────────────────────────── */
+    .info-bar {
+      background: white; border-radius: var(--radius);
+      padding: 1rem 1.4rem; margin-bottom: 2rem;
+      display: flex; align-items: center; gap: 0.8rem;
+      border-left: 4px solid var(--gold);
+      box-shadow: 0 1px 6px rgba(15,32,68,0.07);
+      font-size: 0.87rem; color: #78520a;
+    }
+
+    /* ── Footer ─────────────────────────────────────── */
+    .site-footer {
+      background: var(--navy); color: rgba(255,255,255,0.55);
+      text-align: center; padding: 1.5rem 1rem; font-size: 0.82rem;
+    }
+    .site-footer strong { color: white; }
+
+    /* ── Responsive ─────────────────────────────────── */
+    @media (max-width: 560px) {
+      .hero { padding: 2.5rem 1.25rem 2rem; }
+      .hero h1 { font-size: 1.7rem; }
+      .exams-grid { grid-template-columns: 1fr; }
+      .site-header { padding: 0.7rem 1rem; }
+    }
+
+    /* ── Fade-in animation ──────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .exam-card { animation: fadeUp 0.45s ease both; }
+    .exam-card:nth-child(2) { animation-delay: 0.1s; }
+    .exam-card:nth-child(3) { animation-delay: 0.2s; }
+  </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="logo">🎓</div>
+<!-- ── Header ─────────────────────────────────────────── -->
+<header class="site-header">
+  <div class="logo">Mojaru <span>Olympiad</span></div>
+  <div class="header-meta">গণিত অলিম্পিয়াড প্রস্তুতি · জুনিয়র</div>
+</header>
 
-        <h1>Academic Portal</h1>
-
-        <p>
-            You are being redirected to the examination page.
-            Please wait a few seconds...
-        </p>
-
-        <div class="loader"></div>
-
-        <a href="MOPJ-35.html" class="redirect-link">
-            Click here if you are not redirected automatically
-        </a>
+<!-- ── Hero ───────────────────────────────────────────── -->
+<div class="hero">
+  <div class="hero-badge">📐 গণিত অলিম্পিয়াড প্রস্তুতি</div>
+  <h1>পরীক্ষা বেছে নাও</h1>
+  <p>নিচের তালিকা থেকে তোমার পরীক্ষাটি বেছে নাও। প্রতিটি পরীক্ষার বিষয়, তারিখ ও মার্ক বিস্তারিত দেখানো আছে।</p>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="val">০২</div>
+      <div class="lbl">মোট পরীক্ষা</div>
     </div>
+    <div class="stat">
+      <div class="val">৩০</div>
+      <div class="lbl">পূর্ণমান</div>
+    </div>
+    <div class="stat">
+      <div class="val">৬০</div>
+      <div class="lbl">মিনিট</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Main ───────────────────────────────────────────── -->
+<main class="main">
+
+  <div class="info-bar">
+    💡 পরীক্ষা শেষে রাত ১০:০০-এর পর উত্তর স্বয়ংক্রিয়ভাবে প্রকাশিত হবে — আগে দেখার সুযোগ নেই!
+  </div>
+
+  <div class="section-heading">
+    <h2>সকল পরীক্ষা</h2>
+    <div class="line"></div>
+    <div class="count-badge">2 টি</div>
+  </div>
+
+  <div class="exams-grid">
+
+    <!-- ── Test 1: MOPJ-35 ──────────────────────────── -->
+    <a class="exam-card" href="MOPJ_35_test1.html">
+      <div class="card-strip teal"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <span class="test-badge teal">Test 01 · MOPJ-35</span>
+          <span class="status-pill open">🔓 উত্তর প্রকাশিত</span>
+        </div>
+
+        <div>
+          <div class="card-title">গড় ও বিভাজ্যতা</div>
+          <div class="card-subtitle">Average, Divisibility &amp; Number Theory</div>
+        </div>
+
+        <div class="topic-chips">
+          <span class="chip teal">📊 গড়</span>
+          <span class="chip green">➗ বিভাজ্যতা</span>
+          <span class="chip violet">🔢 সংখ্যাতত্ত্ব</span>
+          <span class="chip gold">⚖️ ভারযুক্ত গড়</span>
+          <span class="chip rose">🔁 গড় সংশোধন</span>
+        </div>
+
+        <div class="card-meta">
+          <span class="meta-chip">📅 ০৭ মে ২০২৬</span>
+          <span class="meta-chip">⭐ পূর্ণমান ৩০</span>
+          <span class="meta-chip">⏱️ ৬০ মিনিট</span>
+          <span class="meta-chip">📝 ৬টি প্রশ্ন</span>
+        </div>
+      </div>
+      <div class="card-cta">
+        <span class="cta-label teal">পরীক্ষায় যাও</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <!-- ── Test 2: MOPJ-36 ──────────────────────────── -->
+    <a class="exam-card" href="MOPJ_36_test2.html">
+      <div class="card-strip violet"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <span class="test-badge violet">Test 02 · MOPJ-36</span>
+          <span class="status-pill locked">🔒 উত্তর লক আছে</span>
+        </div>
+
+        <div>
+          <div class="card-title">সমান্তর ও গুণোত্তর ধারা</div>
+          <div class="card-subtitle">Arithmetic &amp; Geometric Progressions</div>
+        </div>
+
+        <div class="topic-chips">
+          <span class="chip violet">📈 সমান্তর ধারা (AP)</span>
+          <span class="chip teal">✖️ গুণোত্তর ধারা (GP)</span>
+          <span class="chip green">🔢 বিশেষ ধারা</span>
+          <span class="chip gold">💡 সৃজনশীল সমস্যা</span>
+        </div>
+
+        <div class="card-meta">
+          <span class="meta-chip">📅 ১৮ জুন ২০২৬</span>
+          <span class="meta-chip">⭐ পূর্ণমান ৩০</span>
+          <span class="meta-chip">⏱️ ৬০ মিনিট</span>
+          <span class="meta-chip">📝 ৫টি প্রশ্ন</span>
+        </div>
+      </div>
+      <div class="card-cta">
+        <span class="cta-label violet">পরীক্ষায় যাও</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+  </div>
+</main>
+
+<!-- ── Footer ─────────────────────────────────────────── -->
+<footer class="site-footer">
+  <p><strong>Mojaru Math Olympiad Prep</strong> · জুনিয়র স্তর</p>
+  <p style="margin-top:0.3rem;font-size:0.8rem;">© ২০২৬ Mojaru · শিক্ষার্থীদের জন্য তৈরি</p>
+</footer>
 
 </body>
 </html>
