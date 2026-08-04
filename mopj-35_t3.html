@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MOPJ-35 · Test 3 | গণিত অলিম্পিয়াড প্রস্তুতি · জুনিয়র</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Page-specific tweaks */
+    .unlock-notice {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      color: var(--text-muted);
+      font-family: var(--font-main);
+      font-size: 0.95rem;
+    }
+    .unlock-notice .big-lock { font-size: 3rem; margin-bottom: 0.75rem; }
+    .answer-box table {
+      width: 100%; border-collapse: collapse; margin-top: 0.75rem; font-size: 0.88rem;
+    }
+    .answer-box table th {
+      background: rgba(14,124,123,0.12); padding: 0.4rem 0.75rem;
+      text-align: left; font-weight: 700; color: var(--teal);
+      font-family: var(--font-main);
+    }
+    .answer-box table td {
+      padding: 0.35rem 0.75rem; border-bottom: 1px solid rgba(14,124,123,0.1);
+      font-family: var(--font-main);
+    }
+    .answer-box table tr:last-child td { border-bottom: none; }
+    .answer-box .final-ans {
+      background: var(--navy); color: var(--saffron-lt);
+      border-radius: 8px; padding: 0.5rem 1rem;
+      font-family: var(--font-mono); font-size: 1rem;
+      font-weight: 700; display: inline-block; margin-top: 0.5rem;
+    }
+    .ans-step-list {
+      list-style: none; display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.5rem;
+    }
+    .ans-step-list li {
+      display: flex; gap: 0.5rem; align-items: flex-start; font-family: var(--font-main); font-size: 0.92rem;
+    }
+    .ans-step-list .step-num {
+      background: var(--teal); color: white; border-radius: 50%;
+      width: 20px; height: 20px; display: flex; align-items: center; justify-content: center;
+      font-size: 0.68rem; font-weight: 700; flex-shrink: 0; margin-top: 0.15rem;
+      font-family: var(--font-mono);
+    }
+    .print-btn {
+      background: var(--parchment); border: 1.5px solid rgba(15,32,68,0.15);
+      color: var(--text-secondary); padding: 0.4rem 1rem;
+      border-radius: 100px; font-size: 0.82rem; font-weight: 600;
+      cursor: pointer; font-family: var(--font-main);
+      transition: all var(--transition); margin-left: auto; display: block;
+    }
+    .print-btn:hover { background: var(--navy); color: white; }
+
+    /* MCQ options */
+    .mcq-options {
+      list-style: none; display: flex; flex-wrap: wrap; gap: 0.6rem 1.4rem;
+      margin: 0.75rem 0 0.25rem 2.5rem;
+      font-family: var(--font-main); font-size: 0.92rem; color: var(--text-secondary);
+    }
+    .mcq-options li { display: flex; align-items: center; gap: 0.3rem; }
+    .mcq-options .opt-label { font-weight: 800; color: var(--navy); }
+    .note-inline {
+      font-size: 0.85rem; color: var(--text-muted);
+      font-family: var(--font-main); font-weight: 400; margin-left: 0.4rem;
+    }
+    .optional-badge {
+      display: inline-block; background: var(--gold-lt); color: var(--gold);
+      font-size: 0.72rem; font-weight: 700; border-radius: 100px;
+      padding: 0.2rem 0.7rem; margin-top: 0.6rem; font-family: var(--font-main);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Site Header ─────────────────────────────────────────── -->
+<header class="site-header">
+  <div class="logo">Mojaru <span>Olympiad</span></div>
+  <nav>
+    <a href="index.html">← সব পরীক্ষা</a>
+    <button class="print-btn" onclick="window.print()">🖨️ প্রিন্ট</button>
+  </nav>
+</header>
+
+<!-- ── Main ────────────────────────────────────────────────── -->
+<main class="page-container">
+
+  <!-- Exam Hero -->
+  <div class="exam-hero">
+    <div class="badge">📐 গণিত অলিম্পিয়াড প্রস্তুতি</div>
+    <h1>অগ্রগতি পরীক্ষা · Mojaru MOPJ-35 · Test 3</h1>
+    <div class="topic-tags">
+      <span class="topic-tag">🔢 ফ্যাক্টোরিয়াল</span>
+      <span class="topic-tag">🔀 পারমুটেশন</span>
+      <span class="topic-tag">🎯 কম্বিনেশন</span>
+      <span class="topic-tag">🎲 প্রোবাবিলিটি</span>
+      <span class="topic-tag">🏅 জুনিয়র স্তর</span>
+    </div>
+    <div class="meta-row">
+      <div class="meta-item"><span class="icon">📝</span> Test No: 03</div>
+      <div class="meta-item"><span class="icon">⭐</span> পূর্ণমান: ২৫</div>
+      <div class="meta-item"><span class="icon">⏱️</span> সময়: ৮:৪০ pm – ৯:২০ pm</div>
+      <div class="meta-item"><span class="icon">📅</span> তারিখ: ০৪-০৮-২০২৬</div>
+    </div>
+  </div>
+
+  <!-- Answer Lock Banner -->
+  <div class="answer-lock-banner" id="lockBanner">
+    <div class="lock-icon-wrap" id="lockIcon">🔒</div>
+    <div class="lock-text">
+      <h3 id="lockTitle">উত্তর এখনো লক আছে</h3>
+      <p id="lockDesc">৪ আগস্ট ২০২৬, রাত ১০:০০-এর পরে উত্তর স্বয়ংক্রিয়ভাবে প্রকাশিত হবে।</p>
+    </div>
+    <div class="countdown-display">
+      <div class="countdown-label">বাকি সময়</div>
+      <div class="countdown-time" id="countdown">--:--:--</div>
+    </div>
+  </div>
+
+  <!-- Student Info -->
+  <div class="student-card">
+    <h3>📋 পরীক্ষার্থীর তথ্য</h3>
+    <div class="student-info-grid">
+      <div class="info-field">
+        <label>নাম</label>
+        <input class="field-line" type="text" placeholder="তোমার নাম লেখো…" />
+      </div>
+      <div class="info-field">
+        <label>শ্রেণি</label>
+        <input class="field-line" type="text" placeholder="শ্রেণি" />
+      </div>
+      <div class="info-field">
+        <label>তারিখ</label>
+        <input class="field-line" type="text" value="০৪-০৮-২০২৬" readonly />
+      </div>
+    </div>
+  </div>
+
+  <!-- Instructions -->
+  <div class="instructions-box">
+    <h3>📌 নির্দেশনা</h3>
+    <ol>
+      <li>অংশ ১-এর সবগুলো প্রশ্নের উত্তর দিতে হবে — মোট ৫ নম্বর।</li>
+      <li>অংশ ২ থেকে যেকোনো ৪টি প্রশ্নের উত্তর দাও — মোট ২০ নম্বর।</li>
+      <li>কাজ দেখাও — শুধু উত্তর লিখলে নম্বর কাটা যাবে।</li>
+      <li>পরীক্ষা শেষ হওয়ার পর রাত ১০:০০-এর পরে উত্তর দেখতে পারবে।</li>
+    </ol>
+  </div>
+
+  <!-- ── Section 1: Short + MCQ + Matching ──────────────────── -->
+  <div class="section-card">
+    <div class="section-title">১। সংক্ষিপ্ত, বহুনির্বাচনী ও মিলকরণ <span style="font-size:0.85rem;color:var(--text-muted);font-family:var(--font-main);font-weight:400;">[৫×১ = ৫ নম্বর]</span></div>
+
+    <!-- Q1 -->
+    <div class="question q-violet">
+      <div class="q-header">
+        <span class="q-number">১</span>
+        <p class="q-text">
+          <strong>"AMMU"</strong> শব্দটাতে কয়টা অক্ষর রিপিট হচ্ছে, এবং এই রিপিটেড অক্ষরের কারণে সাজানোর মোট সংখ্যা বের করার ফর্মুলাটা কী হবে?
+        </p>
+        <span class="q-marks">১ নম্বর</span>
+      </div>
+      <div class="answer-section">
+        <div class="unlock-notice" id="lock-1"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-1">
+          <div class="ans-label">✅ উত্তর</div>
+          <ul class="ans-step-list">
+            <li><span class="step-num">১</span><span>"AMMU" শব্দে মোট ৪টি অক্ষর: A, M, M, U — এর মধ্যে <strong>'M'</strong> অক্ষরটি ২ বার রিপিট হয়েছে।</span></li>
+            <li><span class="step-num">২</span><span>রিপিটেড অক্ষর থাকলে সাজানোর ফর্মুলা: <span class="math-step">n! / (r!)</span>, যেখানে n = মোট অক্ষর সংখ্যা, r = রিপিটেড অক্ষরের সংখ্যা</span></li>
+            <li><span class="step-num">৩</span><span>এখানে: <span class="math-step">4! / 2! = 24 / 2 = 12</span></span></li>
+          </ul>
+          <div class="final-ans">মোট সাজানো যাবে: ১২ ভাবে</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question q-teal">
+      <div class="q-header">
+        <span class="q-number">২</span>
+        <p class="q-text"><strong>7! ÷ 5!</strong> এর মান কত?</p>
+        <span class="q-marks">১ নম্বর</span>
+      </div>
+      <ul class="mcq-options">
+        <li><span class="opt-label">ক)</span> ৪২</li>
+        <li><span class="opt-label">খ)</span> ৩৫</li>
+        <li><span class="opt-label">গ)</span> ২১</li>
+        <li><span class="opt-label">ঘ)</span> ১৪</li>
+      </ul>
+      <div class="answer-section">
+        <div class="unlock-notice" id="lock-2"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-2">
+          <div class="ans-label">✅ উত্তর</div>
+          <p><span class="math-step">7! ÷ 5! = (7 × 6 × 5!) ÷ 5! = 7 × 6 = 42</span></p>
+          <div class="final-ans">সঠিক উত্তর: ক) ৪২</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question q-gold">
+      <div class="q-header">
+        <span class="q-number">৩</span>
+        <p class="q-text">
+          তোমার ৪ জন বন্ধুর মধ্যে থেকে ২ জনকে ক্যাপ্টেন আর ভাইস-ক্যাপ্টেন বানাতে হবে (দুইটা পদ আলাদা)। এটা কোন ক্যাটাগরির সমস্যা?
+        </p>
+        <span class="q-marks">১ নম্বর</span>
+      </div>
+      <ul class="mcq-options">
+        <li><span class="opt-label">ক)</span> কম্বিনেশন</li>
+        <li><span class="opt-label">খ)</span> পারমুটেশন</li>
+        <li><span class="opt-label">গ)</span> প্রোবাবিলিটি</li>
+        <li><span class="opt-label">ঘ)</span> ফ্যাক্টোরিয়াল শুধু</li>
+      </ul>
+      <div class="answer-section">
+        <div class="unlock-notice" id="lock-3"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-3">
+          <div class="ans-label">✅ উত্তর</div>
+          <p>যেহেতু ক্যাপ্টেন আর ভাইস-ক্যাপ্টেন দুইটা আলাদা পদ (position গুরুত্বপূর্ণ), তাই এটা <strong>পারমুটেশন</strong>।</p>
+          <p><span class="math-step">P(4,2) = 4! / (4-2)! = 4 × 3 = 12</span> রকমভাবে নির্বাচন করা যাবে।</p>
+          <div class="final-ans">সঠিক উত্তর: খ) পারমুটেশন</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q4-5: Matching -->
+    <div class="question q-rose">
+      <div class="q-header">
+        <span class="q-number">৪-৫</span>
+        <p class="q-text">বাম পাশের প্রশ্নের সাথে ডান পাশের সঠিক কনসেপ্ট মিলাও —</p>
+        <span class="q-marks">২ নম্বর</span>
+      </div>
+      <table style="margin: 0.5rem 0 0.75rem 2.5rem; width: calc(100% - 2.5rem); border-collapse: collapse; font-size: 0.9rem;">
+        <tr>
+          <th style="background: rgba(192,56,75,0.1); padding: 0.4rem 0.75rem; text-align:left; font-weight:700; color: var(--rose);">বাম পাশ (পরিস্থিতি)</th>
+          <th style="background: rgba(192,56,75,0.1); padding: 0.4rem 0.75rem; text-align:left; font-weight:700; color: var(--rose);">ডান পাশ (কনসেপ্ট)</th>
+        </tr>
+        <tr>
+          <td style="padding: 0.4rem 0.75rem; border-bottom: 1px solid rgba(192,56,75,0.15);">৪. রিকশায় ৩ জনের মধ্যে কে চালক আর কে যাত্রী বসবে, সেটা ঠিক করা</td>
+          <td style="padding: 0.4rem 0.75rem; border-bottom: 1px solid rgba(192,56,75,0.15);">(a) কম্বিনেশন</td>
+        </tr>
+        <tr>
+          <td style="padding: 0.4rem 0.75rem; border-bottom: 1px solid rgba(192,56,75,0.15);">৫. একটা ছক্কা ফেলে ৬ ওঠার সম্ভাবনা বের করা</td>
+          <td style="padding: 0.4rem 0.75rem; border-bottom: 1px solid rgba(192,56,75,0.15);">(b) প্রোবাবিলিটি</td>
+        </tr>
+        <tr>
+          <td style="padding: 0.4rem 0.75rem;"></td>
+          <td style="padding: 0.4rem 0.75rem;">(c) পারমুটেশন</td>
+        </tr>
+      </table>
+      <div class="answer-section" style="margin-left: 2.5rem;">
+        <div class="unlock-notice" id="lock-4-5"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-4-5">
+          <div class="ans-label">✅ উত্তর</div>
+          <ul class="ans-step-list">
+            <li><span class="step-num">৪</span><span>রিকশায় চালক/যাত্রী নির্ধারণ — position আলাদা, তাই এটা <strong>(c) পারমুটেশন</strong></span></li>
+            <li><span class="step-num">৫</span><span>ছক্কায় ৬ ওঠার সম্ভাবনা বের করা — এটা <strong>(b) প্রোবাবিলিটি</strong></span></li>
+          </ul>
+          <div class="final-ans">৪ → (c) পারমুটেশন | ৫ → (b) প্রোবাবিলিটি</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider" />
+
+  <!-- ── Section 2: Any 4 of 6 ───────────────────────────────── -->
+  <div class="section-card">
+    <div class="section-title">
+      ২। সৃজনশীল সমস্যা <span style="font-size:0.85rem;color:var(--text-muted);font-family:var(--font-main);font-weight:400;">— যেকোনো ৪টি প্রশ্নের উত্তর দাও · [৫×৪ = ২০ নম্বর]</span>
+    </div>
+
+    <!-- Q1 -->
+    <div class="question q-teal">
+      <div class="q-header">
+        <span class="q-number">১</span>
+        <p class="q-text">
+          তোমার বাসার কুক প্রতিদিন ৪ রকম তরকারি আর ৩ রকম ভর্তা রান্না করতে পারে। তুমি যদি প্রতিদিন লাঞ্চে ২টা তরকারি আর ১টা ভর্তা বেছে নিতে চাও, তাহলে কতদিন তোমার লাঞ্চ মেনু রিপিট না করে চালানো যাবে?
+        </p>
+        <span class="q-marks">৫ নম্বর</span>
+      </div>
+      <div class="answer-section">
+        <div class="unlock-notice" id="lock-s2-1"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-s2-1">
+          <div class="ans-label">✅ উত্তর</div>
+          <ul class="ans-step-list">
+            <li><span class="step-num">১</span><span>৪টা তরকারি থেকে ২টা বেছে নেওয়ার উপায় (order গুরুত্বপূর্ণ না): <span class="math-step">C(4,2) = 6</span></span></li>
+            <li><span class="step-num">২</span><span>৩টা ভর্তা থেকে ১টা বেছে নেওয়ার উপায়: <span class="math-step">C(3,1) = 3</span></span></li>
+            <li><span class="step-num">৩</span><span>মোট মেনু কম্বিনেশন: <span class="math-step">6 × 3 = 18</span></span></li>
+          </ul>
+          <div class="final-ans">উত্তর: ১৮ দিন মেনু রিপিট না করে চালানো যাবে</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question q-violet">
+      <div class="q-header">
+        <span class="q-number">২</span>
+        <p class="q-text">
+          তোমার ৫ জন বন্ধু মিলে রিকশায় ঘুরতে বের হবে, কিন্তু রিকশায় বসার জায়গা মাত্র ৩টা।
+        </p>
+        <span class="q-marks">৫ নম্বর</span>
+      </div>
+      <ul class="sub-questions">
+        <li><span class="sub-label">(ক)</span><span>কতভাবে ৩ জনকে বেছে রিকশায় বসানো যাবে?</span></li>
+        <li><span class="sub-label">(খ)</span><span>যদি "রহিম" সবসময় বসেই থাকতে চায় (মানে ওকে অবশ্যই নিতে হবে)?</span></li>
+      </ul>
+      <div class="answer-section">
+        <div class="unlock-notice" id="lock-s2-2"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-s2-2">
+          <div class="ans-label">✅ উত্তর</div>
+          <p><strong>(ক)</strong> ৫ জন থেকে ৩ জন বেছে নেওয়া (আসন নির্দিষ্ট নয়, শুধু কারা যাবে):</p>
+          <p><span class="math-step">C(5,3) = 5! / (3! × 2!) = 10</span></p>
+          <div class="final-ans">(ক) ১০ ভাবে</div>
+          <br>
+          <p><strong>(খ)</strong> রহিম বাধ্যতামূলক, তাই বাকি ৪ জন থেকে আর ২ জন বেছে নিতে হবে:</p>
+          <p><span class="math-step">C(4,2) = 4! / (2! × 2!) = 6</span></p>
+          <div class="final-ans">(খ) ৬ ভাবে</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question q-rose">
+      <div class="q-header">
+        <span class="q-number">৩</span>
+        <p class="q-text">
+          <strong>"BIRYANI"</strong> (বিরিয়ানি) শব্দটা কতভাবে সাজানো যায়, যদি শর্ত হয় দুইটা 'I' কখনো পাশাপাশি বসতে পারবে না (কারণ ওরা একসাথে থাকলে নাকি ঝগড়া করে)?
+        </p>
+        <span class="q-marks">৫ নম্বর</span>
+      </div>
+      <div class="answer-section">
+        <div class="unlock-notice" id="lock-s2-3"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-s2-3">
+          <div class="ans-label">✅ উত্তর</div>
+          <ul class="ans-step-list">
+            <li><span class="step-num">১</span><span>"BIRYANI"-তে ৭টি অক্ষর আছে (B, I, R, Y, A, N, I), যার মধ্যে 'I' ২ বার আছে।</span></li>
+            <li><span class="step-num">২</span><span>মোট সাজানোর সংখ্যা (শর্ত ছাড়া): <span class="math-step">7! / 2! = 5040 / 2 = 2520</span></span></li>
+            <li><span class="step-num">৩</span><span>দুইটা 'I' পাশাপাশি ধরলে (একটা ইউনিট হিসেবে): মোট ৬টা ইউনিট → <span class="math-step">6! = 720</span></span></li>
+            <li><span class="step-num">৪</span><span>দুইটা 'I' পাশাপাশি নয় এমন সাজানোর সংখ্যা: <span class="math-step">2520 − 720 = 1800</span></span></li>
+          </ul>
+          <div class="final-ans">উত্তর: ১৮০০ ভাবে</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="question q-gold">
+      <div class="q-header">
+        <span class="q-number">৪</span>
+        <p class="q-text">
+          তুমি একটা ছক্কা (dice) ফেলছো আর সাথে একটা তাসের প্যাকেট থেকে একটা কার্ড তুলছো। ছক্কায় ৬ ওঠার এবং কার্ডটা "কিং" হওয়ার সম্ভাবনা কত?
+        </p>
+        <span class="q-marks">৫ নম্বর</span>
+      </div>
+      <div class="answer-section">
+        <div class="unlock-notice" id="lock-s2-4"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-s2-4">
+          <div class="ans-label">✅ উত্তর</div>
+          <ul class="ans-step-list">
+            <li><span class="step-num">১</span><span>ছক্কায় ৬ ওঠার সম্ভাবনা: <span class="math-step">P(6) = 1/6</span></span></li>
+            <li><span class="step-num">২</span><span>৫২টা কার্ডের মধ্যে ৪টা কিং, তাই: <span class="math-step">P(King) = 4/52 = 1/13</span></span></li>
+            <li><span class="step-num">৩</span><span>দুইটা event স্বাধীন (independent), তাই গুণ করতে হবে: <span class="math-step">1/6 × 1/13 = 1/78</span></span></li>
+          </ul>
+          <div class="final-ans">উত্তর: ১/৭৮</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="question q-green">
+      <div class="q-header">
+        <span class="q-number">৫</span>
+        <p class="q-text">
+          একটা বাক্সে ৪টা লাল, ৩টা নীল, আর ২টা সবুজ বল আছে। তুমি চোখ বন্ধ করে এলোমেলোভাবে ২টা বল তুললে, দুটোই লাল হওয়ার সম্ভাবনা কত?
+        </p>
+        <span class="q-marks">৫ নম্বর</span>
+      </div>
+      <div class="answer-section">
+        <div class="unlock-notice" id="lock-s2-5"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-s2-5">
+          <div class="ans-label">✅ উত্তর</div>
+          <ul class="ans-step-list">
+            <li><span class="step-num">১</span><span>মোট বল: <span class="math-step">4 + 3 + 2 = 9</span>টা</span></li>
+            <li><span class="step-num">২</span><span>৯টা থেকে ২টা তোলার মোট উপায়: <span class="math-step">C(9,2) = 36</span></span></li>
+            <li><span class="step-num">৩</span><span>৪টা লাল থেকে ২টা তোলার উপায়: <span class="math-step">C(4,2) = 6</span></span></li>
+            <li><span class="step-num">৪</span><span>সম্ভাবনা: <span class="math-step">6 / 36 = 1/6</span></span></li>
+          </ul>
+          <div class="final-ans">উত্তর: ১/৬</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="question q-violet">
+      <div class="q-header">
+        <span class="q-number">৬</span>
+        <p class="q-text">
+          তোমার গ্রুপে ৫ জন বন্ধু আছে, তোমরা সবাই মিলে গোল টেবিলে বসে লুডু খেলবে। গোল টেবিলে বসার জন্য কতভাবে সবাইকে সাজানো যায় (মনে রেখো, গোল টেবিলে ঘুরালে বিন্যাস একই থাকে)?
+        </p>
+        <span class="q-marks">৫ নম্বর</span>
+      </div>
+      <div class="answer-section">
+        <div class="unlock-notice" id="lock-s2-6"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-s2-6">
+          <div class="ans-label">✅ উত্তর</div>
+          <ul class="ans-step-list">
+            <li><span class="step-num">১</span><span>গোল টেবিলে n জনের বৃত্তাকার বিন্যাসের ফর্মুলা: <span class="math-step">(n − 1)!</span></span></li>
+            <li><span class="step-num">২</span><span>এখানে n = 5, তাই: <span class="math-step">(5 − 1)! = 4! = 24</span></span></li>
+          </ul>
+          <div class="final-ans">উত্তর: ২৪ ভাবে</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Marks Distribution -->
+  <div class="section-card" style="animation-delay:0.4s">
+    <div class="section-title">নম্বর বিভাজন</div>
+    <table class="marks-table">
+      <thead><tr><th>প্রশ্ন</th><th>বিষয়</th><th>নম্বর</th></tr></thead>
+      <tbody>
+        <tr><td>১</td><td>AMMU — রিপিটেড অক্ষর সাজানো</td><td>১</td></tr>
+        <tr><td>২</td><td>MCQ — ফ্যাক্টোরিয়াল</td><td>১</td></tr>
+        <tr><td>৩</td><td>MCQ — পারমুটেশন চেনা</td><td>১</td></tr>
+        <tr><td>৪-৫</td><td>ম্যাচিং — কনসেপ্ট মেলানো</td><td>২</td></tr>
+        <tr><td colspan="2">অংশ ১ মোট</td><td>৫</td></tr>
+        <tr><td>২.১–২.৬</td><td>সৃজনশীল সমস্যা (যেকোনো ৪টি)</td><td>৪ × ৫ = ২০</td></tr>
+        <tr style="font-weight:700;"><td colspan="2">সর্বমোট</td><td>২৫</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</main>
+
+<!-- ── Footer ───────────────────────────────────────────────── -->
+<footer class="site-footer">
+  <p><strong>Mojaru Math Olympiad Prep</strong> · MOPJ-35 · Test 3 · জুনিয়র স্তর</p>
+  <p style="margin-top:0.3rem;font-size:0.8rem;">© ২০২৬ Mojaru · শিক্ষার্থীদের জন্য তৈরি</p>
+</footer>
+
+<!-- ── Countdown + Answer Reveal Script ─────────────────────── -->
+<script>
+  // Unlock date/time: 4 August 2026, 10:00 PM Bangladesh Time (UTC+6)
+  const UNLOCK_DATE = new Date('2026-08-04T22:00:00+06:00');
+
+  const lockBanner     = document.getElementById('lockBanner');
+  const lockIcon       = document.getElementById('lockIcon');
+  const lockTitle      = document.getElementById('lockTitle');
+  const lockDesc       = document.getElementById('lockDesc');
+  const countdownEl    = document.getElementById('countdown');
+
+  const answerIds = ['1','2','3','4-5','s2-1','s2-2','s2-3','s2-4','s2-5','s2-6'];
+
+  function pad(n){ return String(n).padStart(2,'0'); }
+
+  function revealAllAnswers() {
+    answerIds.forEach(id => {
+      const lockEl = document.getElementById(`lock-${id}`);
+      const ansEl  = document.getElementById(`ans-${id}`);
+      if (lockEl) lockEl.style.display = 'none';
+      if (ansEl)  ansEl.classList.add('visible');
+    });
+  }
+
+  function updateCountdown() {
+    const now  = new Date();
+    const diff = UNLOCK_DATE - now;
+
+    if (diff <= 0) {
+      countdownEl.textContent = '✅ খোলা হয়েছে';
+      lockBanner.classList.add('unlocked');
+      lockIcon.textContent  = '🔓';
+      lockTitle.textContent = 'উত্তর প্রকাশিত হয়েছে!';
+      lockDesc.textContent  = '৪ আগস্ট ২০২৬, রাত ১০:০০-এর পরে উত্তর খোলা হয়েছে।';
+      document.querySelector('.countdown-display').style.background = 'rgba(255,255,255,0.15)';
+      revealAllAnswers();
+      clearInterval(timer);
+      return;
+    }
+
+    const hours   = Math.floor(diff / 3_600_000);
+    const minutes = Math.floor((diff % 3_600_000) / 60_000);
+    const seconds = Math.floor((diff % 60_000) / 1_000);
+
+    if (hours >= 24) {
+      const days = Math.floor(hours / 24);
+      const hrs  = hours % 24;
+      countdownEl.textContent = `${days}d ${pad(hrs)}:${pad(minutes)}:${pad(seconds)}`;
+    } else {
+      countdownEl.textContent = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+    }
+  }
+
+  updateCountdown();
+  const timer = setInterval(updateCountdown, 1000);
+</script>
+
+</body>
+</html>
