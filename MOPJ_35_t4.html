@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MOPJ-35 · Test 4 | গণিত অলিম্পিয়াড প্রস্তুতি · জুনিয়র</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Page-specific tweaks */
+    .unlock-notice {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      color: var(--text-muted);
+      font-family: var(--font-main);
+      font-size: 0.95rem;
+    }
+    .unlock-notice .big-lock { font-size: 3rem; margin-bottom: 0.75rem; }
+    .answer-box table {
+      width: 100%; border-collapse: collapse; margin-top: 0.75rem; font-size: 0.88rem;
+    }
+    .answer-box table th {
+      background: rgba(14,124,123,0.12); padding: 0.4rem 0.75rem;
+      text-align: left; font-weight: 700; color: var(--teal);
+      font-family: var(--font-main);
+    }
+    .answer-box table td {
+      padding: 0.35rem 0.75rem; border-bottom: 1px solid rgba(14,124,123,0.1);
+      font-family: var(--font-main);
+    }
+    .answer-box table tr:last-child td { border-bottom: none; }
+    .answer-box .final-ans {
+      background: var(--navy); color: var(--saffron-lt);
+      border-radius: 8px; padding: 0.5rem 1rem;
+      font-family: var(--font-mono); font-size: 1rem;
+      font-weight: 700; display: inline-block; margin-top: 0.5rem;
+    }
+    .ans-step-list {
+      list-style: none; display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.5rem;
+    }
+    .ans-step-list li {
+      display: flex; gap: 0.5rem; align-items: flex-start; font-family: var(--font-main); font-size: 0.92rem;
+    }
+    .ans-step-list .step-num {
+      background: var(--teal); color: white; border-radius: 50%;
+      width: 20px; height: 20px; display: flex; align-items: center; justify-content: center;
+      font-size: 0.68rem; font-weight: 700; flex-shrink: 0; margin-top: 0.15rem;
+      font-family: var(--font-mono);
+    }
+    .print-btn {
+      background: var(--parchment); border: 1.5px solid rgba(15,32,68,0.15);
+      color: var(--text-secondary); padding: 0.4rem 1rem;
+      border-radius: 100px; font-size: 0.82rem; font-weight: 600;
+      cursor: pointer; font-family: var(--font-main);
+      transition: all var(--transition); margin-left: auto; display: block;
+    }
+    .print-btn:hover { background: var(--navy); color: white; }
+
+    .sub-questions {
+      list-style: none; display: flex; flex-direction: column; gap: 0.4rem;
+      margin: 0.6rem 0 0.25rem 2.5rem; font-family: var(--font-main); font-size: 0.92rem;
+    }
+    .sub-questions .sub-label { font-weight: 800; color: var(--navy); margin-right: 0.4rem; }
+
+    .note-inline {
+      font-size: 0.85rem; color: var(--text-muted);
+      font-family: var(--font-main); font-weight: 400; margin-left: 0.4rem;
+    }
+    .optional-badge {
+      display: inline-block; background: var(--gold-lt); color: var(--gold);
+      font-size: 0.72rem; font-weight: 700; border-radius: 100px;
+      padding: 0.2rem 0.7rem; margin-top: 0.6rem; font-family: var(--font-main);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Site Header ─────────────────────────────────────────── -->
+<header class="site-header">
+  <div class="logo">Mojaru <span>Olympiad</span></div>
+  <nav>
+    <a href="index.html">← সব পরীক্ষা</a>
+    <button class="print-btn" onclick="window.print()">🖨️ প্রিন্ট</button>
+  </nav>
+</header>
+
+<!-- ── Main ────────────────────────────────────────────────── -->
+<main class="page-container">
+
+  <!-- Exam Hero -->
+  <div class="exam-hero">
+    <div class="badge">📐 গণিত অলিম্পিয়াড প্রস্তুতি</div>
+    <h1>অগ্রগতি পরীক্ষা · Mojaru MOPJ-35 · Test 4</h1>
+    <div class="topic-tags">
+      <span class="topic-tag">🔤 চলক</span>
+      <span class="topic-tag">➕ সহগ ও ধ্রুবক</span>
+      <span class="topic-tag">🟰 সমীকরণ</span>
+      <span class="topic-tag">🔗 সমীকরণ জোট</span>
+      <span class="topic-tag">🏅 জুনিয়র স্তর</span>
+    </div>
+    <div class="meta-row">
+      <div class="meta-item"><span class="icon">📝</span> Test No: 04</div>
+      <div class="meta-item"><span class="icon">⭐</span> পূর্ণমান: ২৫</div>
+      <div class="meta-item"><span class="icon">⏱️</span> সময়: ৮:৩৫ pm – ৯:১৫ pm</div>
+      <div class="meta-item"><span class="icon">📅</span> তারিখ: ২০-০৮-২০২৬</div>
+    </div>
+  </div>
+
+  <!-- Answer Lock Banner -->
+  <div class="answer-lock-banner" id="lockBanner">
+    <div class="lock-icon-wrap" id="lockIcon">🔒</div>
+    <div class="lock-text">
+      <h3 id="lockTitle">উত্তর এখনো লক আছে</h3>
+      <p id="lockDesc">২০ আগস্ট ২০২৬, রাত ১০:০০-এর পরে উত্তর স্বয়ংক্রিয়ভাবে প্রকাশিত হবে।</p>
+    </div>
+    <div class="countdown-display">
+      <div class="countdown-label">বাকি সময়</div>
+      <div class="countdown-time" id="countdown">--:--:--</div>
+    </div>
+  </div>
+
+  <!-- Student Info -->
+  <div class="student-card">
+    <h3>📋 পরীক্ষার্থীর তথ্য</h3>
+    <div class="student-info-grid">
+      <div class="info-field">
+        <label>নাম</label>
+        <input class="field-line" type="text" placeholder="তোমার নাম লেখো…" />
+      </div>
+      <div class="info-field">
+        <label>শ্রেণি</label>
+        <input class="field-line" type="text" placeholder="শ্রেণি" />
+      </div>
+      <div class="info-field">
+        <label>তারিখ</label>
+        <input class="field-line" type="text" value="২০-০৮-২০২৬" readonly />
+      </div>
+    </div>
+  </div>
+
+  <!-- Instructions -->
+  <div class="instructions-box">
+    <h3>📌 নির্দেশনা</h3>
+    <ol>
+      <li>ক অংশের সবগুলো প্রশ্নের উত্তর দিতে হবে — মোট ৫ নম্বর।</li>
+      <li>খ অংশ থেকে যেকোনো ৪টি প্রশ্নের উত্তর দাও — মোট ২০ নম্বর।</li>
+      <li>কাজ দেখাও — শুধু উত্তর লিখলে নম্বর কাটা যাবে।</li>
+      <li>পরীক্ষা শেষ হওয়ার পর রাত ১০:০০-এর পরে উত্তর দেখতে পারবে।</li>
+    </ol>
+  </div>
+
+  <!-- ── ক অংশ: সংক্ষিপ্ত প্রশ্ন ───────────────────────────── -->
+  <div class="section-card">
+    <div class="section-title">ক অংশ — সংক্ষিপ্ত প্রশ্ন <span style="font-size:0.85rem;color:var(--text-muted);font-family:var(--font-main);font-weight:400;">[৫×১ = ৫ নম্বর]</span></div>
+
+    <!-- Q1 -->
+    <div class="question q-teal">
+      <div class="q-header">
+        <span class="q-number">১</span>
+        <p class="q-text"><strong>চলক</strong> কাকে বলে? উদাহরণ দাও।</p>
+        <span class="q-marks">১ নম্বর</span>
+      </div>
+      <div class="answer-section">
+        <div class="unlock-notice" id="lock-1"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-1">
+          <div class="ans-label">✅ উত্তর</div>
+          <p>যে প্রতীক (সাধারণত x, y, z ইত্যাদি) দিয়ে কোনো অজানা বা পরিবর্তনশীল রাশিকে বোঝানো হয়, তাকে <strong>চলক</strong> বলে।</p>
+          <div class="final-ans">উদাহরণ: x + 5 = 10 — এখানে x একটি চলক</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question q-violet">
+      <div class="q-header">
+        <span class="q-number">২</span>
+        <p class="q-text"><strong>সহগ</strong> কাকে বলে? উদাহরণ দাও।</p>
+        <span class="q-marks">১ নম্বর</span>
+      </div>
+      <div class="answer-section">
+        <div class="unlock-notice" id="lock-2"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-2">
+          <div class="ans-label">✅ উত্তর</div>
+          <p>কোনো চলকের সাথে গুণ আকারে থাকা সংখ্যাকে সেই চলকের <strong>সহগ</strong> বলে।</p>
+          <div class="final-ans">উদাহরণ: 3x — এখানে 3 হলো x-এর সহগ</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question q-gold">
+      <div class="q-header">
+        <span class="q-number">৩</span>
+        <p class="q-text"><strong>ধ্রুবক</strong> কাকে বলে? উদাহরণ দাও।</p>
+        <span class="q-marks">১ নম্বর</span>
+      </div>
+      <div class="answer-section">
+        <div class="unlock-notice" id="lock-3"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-3">
+          <div class="ans-label">✅ উত্তর</div>
+          <p>যে রাশির মান সবসময় নির্দিষ্ট ও অপরিবর্তনশীল থাকে, তাকে <strong>ধ্রুবক</strong> বলে।</p>
+          <div class="final-ans">উদাহরণ: 2x + 7 = 15 — এখানে 7 ও 15 ধ্রুবক</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="question q-rose">
+      <div class="q-header">
+        <span class="q-number">৪</span>
+        <p class="q-text"><strong>সমীকরণ</strong> কাকে বলে? উদাহরণ দাও।</p>
+        <span class="q-marks">১ নম্বর</span>
+      </div>
+      <div class="answer-section">
+        <div class="unlock-notice" id="lock-4"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-4">
+          <div class="ans-label">✅ উত্তর</div>
+          <p>দুইটি রাশির মধ্যে সমতা প্রকাশ করে এমন গাণিতিক বাক্যকে <strong>সমীকরণ</strong> বলে, যাতে একটি "=" চিহ্ন থাকে।</p>
+          <div class="final-ans">উদাহরণ: 2x + 3 = 11</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="question q-green">
+      <div class="q-header">
+        <span class="q-number">৫</span>
+        <p class="q-text"><strong>সমীকরণ জোট</strong> কাকে বলে? উদাহরণ দাও।</p>
+        <span class="q-marks">১ নম্বর</span>
+      </div>
+      <div class="answer-section">
+        <div class="unlock-notice" id="lock-5"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-5">
+          <div class="ans-label">✅ উত্তর</div>
+          <p>দুই বা ততোধিক চলক বিশিষ্ট দুই বা ততোধিক সমীকরণ একসাথে থাকলে এবং সেগুলো একসাথে সমাধান করতে হলে, তাকে <strong>সমীকরণ জোট</strong> বলে।</p>
+          <div class="final-ans">উদাহরণ: x + y = 10 এবং x − y = 2</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr class="section-divider" />
+
+  <!-- ── খ অংশ: সমাধানমূলক প্রশ্ন ─────────────────────────── -->
+  <div class="section-card">
+    <div class="section-title">
+      খ অংশ — সমাধানমূলক প্রশ্ন <span style="font-size:0.85rem;color:var(--text-muted);font-family:var(--font-main);font-weight:400;">— যেকোনো ৪টি প্রশ্নের উত্তর দাও · [৫×৪ = ২০ নম্বর]</span>
+    </div>
+
+    <!-- Q1: one-variable, medium -->
+    <div class="question q-teal">
+      <div class="q-header">
+        <span class="q-number">১</span>
+        <p class="q-text">
+          সমাধান করো: <span class="math-step">(2x + 3)/5 − (x − 1)/3 = 2</span>
+        </p>
+        <span class="q-marks">৫ নম্বর</span>
+      </div>
+      <div class="answer-section">
+        <div class="unlock-notice" id="lock-s2-1"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-s2-1">
+          <div class="ans-label">✅ উত্তর</div>
+          <ul class="ans-step-list">
+            <li><span class="step-num">১</span><span>উভয় পক্ষকে ১৫ (৫ ও ৩-এর ল.সা.গু.) দিয়ে গুণ করি: <span class="math-step">3(2x+3) − 5(x−1) = 30</span></span></li>
+            <li><span class="step-num">২</span><span>বন্ধনী খুলি: <span class="math-step">6x + 9 − 5x + 5 = 30</span></span></li>
+            <li><span class="step-num">৩</span><span>একই রাশি একত্র করি: <span class="math-step">x + 14 = 30</span></span></li>
+            <li><span class="step-num">৪</span><span>উভয় পক্ষ থেকে ১৪ বিয়োগ করি: <span class="math-step">x = 16</span></span></li>
+          </ul>
+          <div class="final-ans">উত্তর: x = ১৬</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q2: story-based one variable -->
+    <div class="question q-violet">
+      <div class="q-header">
+        <span class="q-number">২</span>
+        <p class="q-text">
+          রাফির কাছে কিছু টাকা ছিল। সে যদি তার টাকার ৩ গুণ থেকে ১০ টাকা খরচ করে, তাহলে তার কাছে ২০ টাকা অবশিষ্ট থাকে। রাফির কাছে প্রথমে কত টাকা ছিল?
+        </p>
+        <span class="q-marks">৫ নম্বর</span>
+      </div>
+      <div class="answer-section">
+        <div class="unlock-notice" id="lock-s2-2"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-s2-2">
+          <div class="ans-label">✅ উত্তর</div>
+          <ul class="ans-step-list">
+            <li><span class="step-num">১</span><span>ধরি, রাফির কাছে প্রথমে টাকা ছিল <span class="math-step">x</span></span></li>
+            <li><span class="step-num">২</span><span>শর্ত অনুযায়ী সমীকরণ: <span class="math-step">3x − 10 = 20</span></span></li>
+            <li><span class="step-num">৩</span><span>উভয় পক্ষে ১০ যোগ করি: <span class="math-step">3x = 30</span></span></li>
+            <li><span class="step-num">৪</span><span>উভয় পক্ষকে ৩ দিয়ে ভাগ করি: <span class="math-step">x = 10</span></span></li>
+          </ul>
+          <div class="final-ans">উত্তর: রাফির কাছে প্রথমে ১০ টাকা ছিল</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q3: two variable, x+y and x-y -->
+    <div class="question q-gold">
+      <div class="q-header">
+        <span class="q-number">৩</span>
+        <p class="q-text">
+          যদি <span class="math-step">x + y = 24</span> এবং <span class="math-step">x − y = 8</span> হয়, তাহলে x এবং y-এর মান কত?
+        </p>
+        <span class="q-marks">৫ নম্বর</span>
+      </div>
+      <div class="answer-section">
+        <div class="unlock-notice" id="lock-s2-3"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-s2-3">
+          <div class="ans-label">✅ উত্তর</div>
+          <ul class="ans-step-list">
+            <li><span class="step-num">১</span><span>দুইটি সমীকরণ যোগ করি: <span class="math-step">(x + y) + (x − y) = 24 + 8</span></span></li>
+            <li><span class="step-num">২</span><span>সরল করি: <span class="math-step">2x = 32 ⇒ x = 16</span></span></li>
+            <li><span class="step-num">৩</span><span>x = 16 বসিয়ে প্রথম সমীকরণ থেকে: <span class="math-step">16 + y = 24 ⇒ y = 8</span></span></li>
+          </ul>
+          <div class="final-ans">উত্তর: x = ১৬, y = ৮</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q4: story-based two variable -->
+    <div class="question q-rose">
+      <div class="q-header">
+        <span class="q-number">৪</span>
+        <p class="q-text">
+          একটি দোকানে ২টি কলম ও ৩টি পেন্সিলের দাম মোট ২৬ টাকা, এবং ৩টি কলম ও ২টি পেন্সিলের দাম মোট ২৪ টাকা। একটি কলম ও একটি পেন্সিলের দাম আলাদাভাবে নির্ণয় করো।
+        </p>
+        <span class="q-marks">৫ নম্বর</span>
+      </div>
+      <div class="answer-section">
+        <div class="unlock-notice" id="lock-s2-4"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-s2-4">
+          <div class="ans-label">✅ উত্তর</div>
+          <ul class="ans-step-list">
+            <li><span class="step-num">১</span><span>ধরি, কলমের দাম x টাকা ও পেন্সিলের দাম y টাকা। সমীকরণ দুইটি: <span class="math-step">2x + 3y = 26</span> ও <span class="math-step">3x + 2y = 24</span></span></li>
+            <li><span class="step-num">২</span><span>প্রথমটিকে ৩ দিয়ে ও দ্বিতীয়টিকে ২ দিয়ে গুণ করি: <span class="math-step">6x + 9y = 78</span> এবং <span class="math-step">6x + 4y = 48</span></span></li>
+            <li><span class="step-num">৩</span><span>বিয়োগ করি: <span class="math-step">5y = 30 ⇒ y = 6</span></span></li>
+            <li><span class="step-num">৪</span><span>y = 6 বসিয়ে: <span class="math-step">2x + 18 = 26 ⇒ x = 4</span></span></li>
+          </ul>
+          <div class="final-ans">উত্তর: কলমের দাম ৪ টাকা, পেন্সিলের দাম ৬ টাকা</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q5: harder two variable, age problem -->
+    <div class="question q-green">
+      <div class="q-header">
+        <span class="q-number">৫</span>
+        <p class="q-text">
+          টুম্পার বয়স ও তার মায়ের বয়সের সমষ্টি ৫০ বছর। এখন থেকে ৫ বছর পর মায়ের বয়স টুম্পার বয়সের ঠিক ৩ গুণ হবে। বর্তমানে টুম্পা ও তার মায়ের বয়স নির্ণয় করো।
+        </p>
+        <span class="q-marks">৫ নম্বর</span>
+      </div>
+      <div class="answer-section">
+        <div class="unlock-notice" id="lock-s2-5"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-s2-5">
+          <div class="ans-label">✅ উত্তর</div>
+          <ul class="ans-step-list">
+            <li><span class="step-num">১</span><span>ধরি, টুম্পার বর্তমান বয়স x বছর ও মায়ের বর্তমান বয়স y বছর। প্রথম শর্ত: <span class="math-step">x + y = 50</span></span></li>
+            <li><span class="step-num">২</span><span>৫ বছর পর: টুম্পা x+5, মা y+5। দ্বিতীয় শর্ত: <span class="math-step">y + 5 = 3(x + 5)</span></span></li>
+            <li><span class="step-num">৩</span><span>সরল করি: <span class="math-step">y + 5 = 3x + 15 ⇒ y = 3x + 10</span></span></li>
+            <li><span class="step-num">৪</span><span>প্রথম সমীকরণে বসাই: <span class="math-step">x + 3x + 10 = 50 ⇒ 4x = 40 ⇒ x = 10</span></span></li>
+            <li><span class="step-num">৫</span><span>x = 10 বসিয়ে: <span class="math-step">y = 3(10) + 10 = 40</span></span></li>
+          </ul>
+          <div class="final-ans">উত্তর: টুম্পার বয়স ১০ বছর, মায়ের বয়স ৪০ বছর</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Marks Distribution -->
+  <div class="section-card" style="animation-delay:0.4s">
+    <div class="section-title">নম্বর বিভাজন</div>
+    <table class="marks-table">
+      <thead><tr><th>প্রশ্ন</th><th>বিষয়</th><th>নম্বর</th></tr></thead>
+      <tbody>
+        <tr><td>ক১</td><td>চলক — সংজ্ঞা ও উদাহরণ</td><td>১</td></tr>
+        <tr><td>ক২</td><td>সহগ — সংজ্ঞা ও উদাহরণ</td><td>১</td></tr>
+        <tr><td>ক৩</td><td>ধ্রুবক — সংজ্ঞা ও উদাহরণ</td><td>১</td></tr>
+        <tr><td>ক৪</td><td>সমীকরণ — সংজ্ঞা ও উদাহরণ</td><td>১</td></tr>
+        <tr><td>ক৫</td><td>সমীকরণ জোট — সংজ্ঞা ও উদাহরণ</td><td>১</td></tr>
+        <tr><td colspan="2">ক অংশ মোট</td><td>৫</td></tr>
+        <tr><td>খ১–খ৫</td><td>এক ও দুই চলকের সমীকরণ (যেকোনো ৪টি)</td><td>৪ × ৫ = ২০</td></tr>
+        <tr style="font-weight:700;"><td colspan="2">সর্বমোট</td><td>২৫</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</main>
+
+<!-- ── Footer ───────────────────────────────────────────────── -->
+<footer class="site-footer">
+  <p><strong>Mojaru Math Olympiad Prep</strong> · MOPJ-35 · Test 4 · জুনিয়র স্তর</p>
+  <p style="margin-top:0.3rem;font-size:0.8rem;">© ২০২৬ Mojaru · শিক্ষার্থীদের জন্য তৈরি</p>
+</footer>
+
+<!-- ── Countdown + Answer Reveal Script ─────────────────────── -->
+<script>
+  // Unlock date/time: 20 August 2026, 10:00 PM Bangladesh Time (UTC+6)
+  const UNLOCK_DATE = new Date('2026-08-20T22:00:00+06:00');
+
+  const lockBanner     = document.getElementById('lockBanner');
+  const lockIcon       = document.getElementById('lockIcon');
+  const lockTitle      = document.getElementById('lockTitle');
+  const lockDesc       = document.getElementById('lockDesc');
+  const countdownEl    = document.getElementById('countdown');
+
+  const answerIds = ['1','2','3','4','5','s2-1','s2-2','s2-3','s2-4','s2-5'];
+
+  function pad(n){ return String(n).padStart(2,'0'); }
+
+  function revealAllAnswers() {
+    answerIds.forEach(id => {
+      const lockEl = document.getElementById(`lock-${id}`);
+      const ansEl  = document.getElementById(`ans-${id}`);
+      if (lockEl) lockEl.style.display = 'none';
+      if (ansEl)  ansEl.classList.add('visible');
+    });
+  }
+
+  function updateCountdown() {
+    const now  = new Date();
+    const diff = UNLOCK_DATE - now;
+
+    if (diff <= 0) {
+      countdownEl.textContent = '✅ খোলা হয়েছে';
+      lockBanner.classList.add('unlocked');
+      lockIcon.textContent  = '🔓';
+      lockTitle.textContent = 'উত্তর প্রকাশিত হয়েছে!';
+      lockDesc.textContent  = '২০ আগস্ট ২০২৬, রাত ১০:০০-এর পরে উত্তর খোলা হয়েছে।';
+      document.querySelector('.countdown-display').style.background = 'rgba(255,255,255,0.15)';
+      revealAllAnswers();
+      clearInterval(timer);
+      return;
+    }
+
+    const hours   = Math.floor(diff / 3_600_000);
+    const minutes = Math.floor((diff % 3_600_000) / 60_000);
+    const seconds = Math.floor((diff % 60_000) / 1_000);
+
+    if (hours >= 24) {
+      const days = Math.floor(hours / 24);
+      const hrs  = hours % 24;
+      countdownEl.textContent = `${days}d ${pad(hrs)}:${pad(minutes)}:${pad(seconds)}`;
+    } else {
+      countdownEl.textContent = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+    }
+  }
+
+  updateCountdown();
+  const timer = setInterval(updateCountdown, 1000);
+</script>
+
+</body>
+</html>
