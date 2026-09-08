@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MOPJ-35 &amp; MOPP-60 · Test 5 | গণিত অলিম্পিয়াড প্রস্তুতি</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Page-specific tweaks */
+    .unlock-notice {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      color: var(--text-muted);
+      font-family: var(--font-main);
+      font-size: 0.95rem;
+    }
+    .unlock-notice .big-lock { font-size: 3rem; margin-bottom: 0.75rem; }
+    .answer-box table {
+      width: 100%; border-collapse: collapse; margin-top: 0.75rem; font-size: 0.88rem;
+    }
+    .answer-box table th {
+      background: rgba(14,124,123,0.12); padding: 0.4rem 0.75rem;
+      text-align: left; font-weight: 700; color: var(--teal);
+      font-family: var(--font-main);
+    }
+    .answer-box table td {
+      padding: 0.35rem 0.75rem; border-bottom: 1px solid rgba(14,124,123,0.1);
+      font-family: var(--font-main);
+    }
+    .answer-box table tr:last-child td { border-bottom: none; }
+    .answer-box .final-ans {
+      background: var(--navy); color: var(--saffron-lt);
+      border-radius: 8px; padding: 0.5rem 1rem;
+      font-family: var(--font-mono); font-size: 1rem;
+      font-weight: 700; display: inline-block; margin-top: 0.5rem;
+    }
+    .ans-step-list {
+      list-style: none; display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.5rem;
+    }
+    .ans-step-list li {
+      display: flex; gap: 0.5rem; align-items: flex-start; font-family: var(--font-main); font-size: 0.92rem;
+    }
+    .ans-step-list .step-num {
+      background: var(--teal); color: white; border-radius: 50%;
+      width: 20px; height: 20px; display: flex; align-items: center; justify-content: center;
+      font-size: 0.68rem; font-weight: 700; flex-shrink: 0; margin-top: 0.15rem;
+      font-family: var(--font-mono);
+    }
+    .print-btn {
+      background: var(--parchment); border: 1.5px solid rgba(15,32,68,0.15);
+      color: var(--text-secondary); padding: 0.4rem 1rem;
+      border-radius: 100px; font-size: 0.82rem; font-weight: 600;
+      cursor: pointer; font-family: var(--font-main);
+      transition: all var(--transition); margin-left: auto; display: block;
+    }
+    .print-btn:hover { background: var(--navy); color: white; }
+
+    .sub-questions {
+      list-style: none; display: flex; flex-direction: column; gap: 0.4rem;
+      margin: 0.6rem 0 0.25rem 2.5rem; font-family: var(--font-main); font-size: 0.92rem;
+    }
+    .sub-questions .sub-label { font-weight: 800; color: var(--navy); margin-right: 0.4rem; }
+
+    .note-inline {
+      font-size: 0.85rem; color: var(--text-muted);
+      font-family: var(--font-main); font-weight: 400; margin-left: 0.4rem;
+    }
+    .optional-badge {
+      display: inline-block; background: var(--gold-lt); color: var(--gold);
+      font-size: 0.72rem; font-weight: 700; border-radius: 100px;
+      padding: 0.2rem 0.7rem; margin-top: 0.6rem; font-family: var(--font-main);
+    }
+    .batch-badge {
+      display: inline-flex; align-items: center; gap: 0.3rem;
+      background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 100px; padding: 0.28rem 0.8rem;
+      font-size: 0.78rem; font-weight: 700; color: white;
+    }
+    .batch-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.9rem; }
+    .angle-diagram { display: block; margin: 0.75rem auto 0.5rem; max-width: 260px; width: 100%; height: auto; }
+  </style>
+</head>
+<body>
+
+<!-- ── Site Header ─────────────────────────────────────────── -->
+<header class="site-header">
+  <div class="logo">Mojaru <span>Olympiad</span></div>
+  <nav>
+    <a href="index.html">← সব পরীক্ষা</a>
+    <button class="print-btn" onclick="window.print()">🖨️ প্রিন্ট</button>
+  </nav>
+</header>
+
+<!-- ── Main ────────────────────────────────────────────────── -->
+<main class="page-container">
+
+  <!-- Exam Hero -->
+  <div class="exam-hero">
+    <div class="badge">📐 গণিত অলিম্পিয়াড প্রস্তুতি</div>
+    <div class="batch-row">
+      <span class="batch-badge">🏷️ MOPJ-35</span>
+      <span class="batch-badge">🏷️ MOPP-60</span>
+    </div>
+    <h1>অগ্রগতি পরীক্ষা · Test 5 (যৌথ পরীক্ষা)</h1>
+    <div class="topic-tags">
+      <span class="topic-tag">📐 একান্তর ও বিপ্রতীপ কোণ</span>
+      <span class="topic-tag">📏 পিথাগোরাসের উপপাদ্য</span>
+      <span class="topic-tag">🔺 ত্রিভুজের ক্ষেত্রফল</span>
+      <span class="topic-tag">🏅 জুনিয়র ও প্রাইমারি স্তর</span>
+    </div>
+    <div class="meta-row">
+      <div class="meta-item"><span class="icon">📝</span> Test No: 05</div>
+      <div class="meta-item"><span class="icon">⭐</span> পূর্ণমান: ২৫</div>
+      <div class="meta-item"><span class="icon">⏱️</span> সময়: ৮:৩৫ pm – ৯:১৫ pm</div>
+      <div class="meta-item"><span class="icon">📅</span> তারিখ: ২৭-০৮-২০২৬</div>
+    </div>
+  </div>
+
+  <!-- Answer Lock Banner -->
+  <div class="answer-lock-banner" id="lockBanner">
+    <div class="lock-icon-wrap" id="lockIcon">🔒</div>
+    <div class="lock-text">
+      <h3 id="lockTitle">উত্তর এখনো লক আছে</h3>
+      <p id="lockDesc">২৭ আগস্ট ২০২৬, রাত ১০:০০-এর পরে উত্তর স্বয়ংক্রিয়ভাবে প্রকাশিত হবে।</p>
+    </div>
+    <div class="countdown-display">
+      <div class="countdown-label">বাকি সময়</div>
+      <div class="countdown-time" id="countdown">--:--:--</div>
+    </div>
+  </div>
+
+  <!-- Student Info -->
+  <div class="student-card">
+    <h3>📋 পরীক্ষার্থীর তথ্য</h3>
+    <div class="student-info-grid">
+      <div class="info-field">
+        <label>নাম</label>
+        <input class="field-line" type="text" placeholder="তোমার নাম লেখো…" />
+      </div>
+      <div class="info-field">
+        <label>ব্যাচ</label>
+        <input class="field-line" type="text" placeholder="MOPJ-35 / MOPP-60" />
+      </div>
+      <div class="info-field">
+        <label>শ্রেণি</label>
+        <input class="field-line" type="text" placeholder="শ্রেণি" />
+      </div>
+      <div class="info-field">
+        <label>তারিখ</label>
+        <input class="field-line" type="text" value="২৭-০৮-২০২৬" readonly />
+      </div>
+    </div>
+  </div>
+
+  <!-- Instructions -->
+  <div class="instructions-box">
+    <h3>📌 নির্দেশনা</h3>
+    <ol>
+      <li>এই পরীক্ষাটি MOPJ-35 ও MOPP-60 — উভয় ব্যাচের জন্য প্রযোজ্য।</li>
+      <li>ক অংশের সবগুলো প্রশ্নের উত্তর দিতে হবে — মোট ৫ নম্বর।</li>
+      <li>খ অংশ থেকে যেকোনো ৪টি প্রশ্নের উত্তর দাও — মোট ২০ নম্বর।</li>
+      <li>কাজ দেখাও — শুধু উত্তর লিখলে নম্বর কাটা যাবে।</li>
+      <li>পরীক্ষা শেষ হওয়ার পর রাত ১০:০০-এর পরে উত্তর দেখতে পারবে।</li>
+    </ol>
+  </div>
+
+  <!-- ── ক অংশ: সংক্ষিপ্ত প্রশ্ন ───────────────────────────── -->
+  <div class="section-card">
+    <div class="section-title">ক অংশ — সংক্ষিপ্ত প্রশ্ন <span style="font-size:0.85rem;color:var(--text-muted);font-family:var(--font-main);font-weight:400;">[৫×১ = ৫ নম্বর]</span></div>
+
+    <!-- Q1 -->
+    <div class="question q-teal">
+      <div class="q-header">
+        <span class="q-number">১</span>
+        <p class="q-text"><strong>একান্তর কোণ</strong> কাকে বলে? একে দেখাও।</p>
+        <span class="q-marks">১ নম্বর</span>
+      </div>
+      <div class="answer-section">
+        <div class="unlock-notice" id="lock-1"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-1">
+          <div class="ans-label">✅ উত্তর</div>
+          <p>দুইটি সমান্তরাল রেখাকে একটি ছেদক রেখা ছেদ করলে, ছেদকের দুই পাশে এবং সমান্তরাল রেখা দুটির মাঝখানে (অভ্যন্তরে) গঠিত যে দুটি কোণ পরস্পর বিপরীত অবস্থানে থাকে, তাদের <strong>একান্তর কোণ</strong> বলে। সমান্তরাল রেখার ক্ষেত্রে একান্তর কোণ দুটি পরস্পর সমান হয়।</p>
+          <div class="final-ans">উদাহরণ: Z-আকৃতিতে গঠিত ভেতরের বিপরীত কোণ দুটি একান্তর কোণ</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question q-violet">
+      <div class="q-header">
+        <span class="q-number">২</span>
+        <p class="q-text"><strong>পিথাগোরাসের উপপাদ্য</strong> কী কী? সূত্রটি লেখ।</p>
+        <span class="q-marks">১ নম্বর</span>
+      </div>
+      <div class="answer-section">
+        <div class="unlock-notice" id="lock-2"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-2">
+          <div class="ans-label">✅ উত্তর</div>
+          <p>সমকোণী ত্রিভুজে, <strong>অতিভুজের বর্গ = ভূমির বর্গ + লম্বের বর্গ</strong>। অর্থাৎ, সমকোণী ত্রিভুজের অতিভুজের ওপর অঙ্কিত বর্গক্ষেত্রের ক্ষেত্রফল, অপর দুই বাহুর ওপর অঙ্কিত বর্গক্ষেত্রদ্বয়ের ক্ষেত্রফলের সমষ্টির সমান।</p>
+          <div class="final-ans">সূত্র: c² = a² + b² (c = অতিভুজ)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question q-gold">
+      <div class="q-header">
+        <span class="q-number">৩</span>
+        <p class="q-text"><strong>সমবাহু ত্রিভুজের ক্ষেত্রফল</strong> নির্ণয়ের সূত্র কী?</p>
+        <span class="q-marks">১ নম্বর</span>
+      </div>
+      <div class="answer-section">
+        <div class="unlock-notice" id="lock-3"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-3">
+          <div class="ans-label">✅ উত্তর</div>
+          <p>সমবাহু ত্রিভুজের প্রতিটি বাহুর দৈর্ঘ্য <span class="math-step">a</span> হলে, এর ক্ষেত্রফল নির্ণয়ের সূত্র হলো:</p>
+          <div class="final-ans">ক্ষেত্রফল = (√3 / 4) × a²</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="question q-rose">
+      <div class="q-header">
+        <span class="q-number">৪</span>
+        <p class="q-text">
+          একটি ত্রিভুজের ভূমি <span class="math-step">৪</span> এবং ক্ষেত্রফল <span class="math-step">১৮</span> হলে উচ্চতা কত?
+        </p>
+        <span class="q-marks">১ নম্বর</span>
+      </div>
+      <div class="answer-section">
+        <div class="unlock-notice" id="lock-4"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-4">
+          <div class="ans-label">✅ উত্তর</div>
+          <ul class="ans-step-list">
+            <li><span class="step-num">১</span><span>ত্রিভুজের ক্ষেত্রফল = <span class="math-step">(১/২) × ভূমি × উচ্চতা</span></span></li>
+            <li><span class="step-num">২</span><span>মান বসাই: <span class="math-step">১৮ = (১/২) × ৪ × উচ্চতা = ২ × উচ্চতা</span></span></li>
+            <li><span class="step-num">৩</span><span>উচ্চতা = <span class="math-step">১৮ ÷ ২ = ৯</span></span></li>
+          </ul>
+          <div class="final-ans">উত্তর: উচ্চতা = ৯ একক</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="question q-green">
+      <div class="q-header">
+        <span class="q-number">৫</span>
+        <p class="q-text"><strong>বিপ্রতীপ কোণ</strong> কাকে বলে? উদাহরণ দাও।</p>
+        <span class="q-marks">১ নম্বর</span>
+      </div>
+      <div class="answer-section">
+        <div class="unlock-notice" id="lock-5"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-5">
+          <div class="ans-label">✅ উত্তর</div>
+          <p>দুইটি সরলরেখা পরস্পর ছেদ করলে ছেদবিন্দুতে যে চারটি কোণ তৈরি হয়, তাদের মধ্যে সরাসরি বিপরীত দিকে অবস্থিত (মুখোমুখি) কোণ দুটিকে <strong>বিপ্রতীপ কোণ</strong> বলে। বিপ্রতীপ কোণ দুটি সর্বদা পরস্পর সমান।</p>
+          <div class="final-ans">উদাহরণ: X-আকৃতির ছেদবিন্দুতে গঠিত মুখোমুখি কোণ দুটি</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr class="section-divider" />
+
+  <!-- ── খ অংশ: সমাধানমূলক প্রশ্ন ─────────────────────────── -->
+  <div class="section-card">
+    <div class="section-title">
+      খ অংশ — সমাধানমূলক প্রশ্ন <span style="font-size:0.85rem;color:var(--text-muted);font-family:var(--font-main);font-weight:400;">— যেকোনো ৪টি প্রশ্নের উত্তর দাও · [৫×৪ = ২০ নম্বর]</span>
+    </div>
+
+    <!-- Q1: angle diagram -->
+    <div class="question q-teal">
+      <div class="q-header">
+        <span class="q-number">১</span>
+        <p class="q-text">
+          <span class="math-step">x = ৪৬</span> ডিগ্রি হলে <span class="math-step">y</span> এর মান কত? (চিত্রে দুইটি সমান্তরাল রেখাকে ত্রিভুজের একটি বাহু ছেদক হিসেবে ছেদ করেছে।)
+        </p>
+        <span class="q-marks">৫ নম্বর</span>
+      </div>
+      <svg class="angle-diagram" viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="150,15 70,225 230,225" fill="none" stroke="#0f2044" stroke-width="2"/>
+        <line x1="20" y1="70" x2="280" y2="70" stroke="#1a1a2e" stroke-width="1.5"/>
+        <line x1="20" y1="150" x2="280" y2="150" stroke="#1a1a2e" stroke-width="1.5"/>
+        <text x="152" y="62" font-size="15" font-family="Georgia, serif" fill="#0e7c7b" font-style="italic">x</text>
+        <text x="197" y="140" font-size="15" font-family="Georgia, serif" fill="#c0384b" font-style="italic">y</text>
+      </svg>
+      <div class="answer-section">
+        <div class="unlock-notice" id="lock-s2-1"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-s2-1">
+          <div class="ans-label">✅ উত্তর</div>
+          <ul class="ans-step-list">
+            <li><span class="step-num">১</span><span>চিত্রের অনুভূমিক রেখা দুইটি পরস্পর সমান্তরাল এবং ত্রিভুজের ডান বাহুটি একটি ছেদক (transversal) হিসেবে কাজ করছে।</span></li>
+            <li><span class="step-num">২</span><span>সমান্তরাল রেখাদ্বয়কে একই ছেদক ছেদ করায় x-এর সংগতিপূর্ণ (corresponding) কোণটি নিচের রেখায়ও x-এর সমান হবে।</span></li>
+            <li><span class="step-num">৩</span><span>সেই সংগতিপূর্ণ কোণ এবং y — বিপ্রতীপ কোণ হওয়ায় তারা পরস্পর সমান, তাই <span class="math-step">y = x</span></span></li>
+          </ul>
+          <div class="final-ans">উত্তর: y = ৪৬°</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q2: Heron's formula -->
+    <div class="question q-violet">
+      <div class="q-header">
+        <span class="q-number">২</span>
+        <p class="q-text">
+          একটি ত্রিভুজের ৩টি বাহুর দৈর্ঘ্য যথাক্রমে ৭, ৫ ও ৬ হলে ক্ষেত্রফল কত?
+        </p>
+        <span class="q-marks">৫ নম্বর</span>
+      </div>
+      <div class="answer-section">
+        <div class="unlock-notice" id="lock-s2-2"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-s2-2">
+          <div class="ans-label">✅ উত্তর (হেরনের সূত্র)</div>
+          <ul class="ans-step-list">
+            <li><span class="step-num">১</span><span>অর্ধপরিসীমা: <span class="math-step">s = (৭ + ৫ + ৬) / ২ = ৯</span></span></li>
+            <li><span class="step-num">২</span><span>হেরনের সূত্র: <span class="math-step">ক্ষেত্রফল = √[s(s−a)(s−b)(s−c)]</span></span></li>
+            <li><span class="step-num">৩</span><span>মান বসাই: <span class="math-step">√[৯ × (৯−৭) × (৯−৫) × (৯−৬)] = √(৯ × ২ × ৪ × ৩)</span></span></li>
+            <li><span class="step-num">৪</span><span>সরল করি: <span class="math-step">√২১৬ = ৬√৬ ≈ ১৪.৭</span></span></li>
+          </ul>
+          <div class="final-ans">উত্তর: ক্ষেত্রফল = ৬√৬ ≈ ১৪.৭ বর্গ একক</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q3: right triangle, hypotenuse & base given, find height -->
+    <div class="question q-gold">
+      <div class="q-header">
+        <span class="q-number">৩</span>
+        <p class="q-text">
+          একটি সমকোণী ত্রিভুজের অতিভুজ ১০ ও ভূমি ৬ হলে উচ্চতা কত?
+        </p>
+        <span class="q-marks">৫ নম্বর</span>
+      </div>
+      <div class="answer-section">
+        <div class="unlock-notice" id="lock-s2-3"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-s2-3">
+          <div class="ans-label">✅ উত্তর</div>
+          <ul class="ans-step-list">
+            <li><span class="step-num">১</span><span>পিথাগোরাসের উপপাদ্য অনুযায়ী: <span class="math-step">অতিভুজ² = ভূমি² + উচ্চতা²</span></span></li>
+            <li><span class="step-num">২</span><span>মান বসাই: <span class="math-step">১০² = ৬² + উচ্চতা² ⇒ ১০০ = ৩৬ + উচ্চতা²</span></span></li>
+            <li><span class="step-num">৩</span><span>সরল করি: <span class="math-step">উচ্চতা² = ১০০ − ৩৬ = ৬৪</span></span></li>
+            <li><span class="step-num">৪</span><span>বর্গমূল করি: <span class="math-step">উচ্চতা = √৬৪ = ৮</span></span></li>
+          </ul>
+          <div class="final-ans">উত্তর: উচ্চতা = ৮ একক</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q4: equilateral triangle height -->
+    <div class="question q-rose">
+      <div class="q-header">
+        <span class="q-number">৪</span>
+        <p class="q-text">
+          একটি সমবাহু ত্রিভুজের একবাহুর দৈর্ঘ্য ৭ সেমি হলে উচ্চতা কত?
+        </p>
+        <span class="q-marks">৫ নম্বর</span>
+      </div>
+      <div class="answer-section">
+        <div class="unlock-notice" id="lock-s2-4"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-s2-4">
+          <div class="ans-label">✅ উত্তর</div>
+          <ul class="ans-step-list">
+            <li><span class="step-num">১</span><span>সমবাহু ত্রিভুজের উচ্চতার সূত্র: <span class="math-step">উচ্চতা = (√৩ / ২) × বাহু</span></span></li>
+            <li><span class="step-num">২</span><span>মান বসাই: <span class="math-step">উচ্চতা = (√৩ / ২) × ৭ = ৭√৩ / ২</span></span></li>
+            <li><span class="step-num">৩</span><span>আসন্ন মান বের করি: <span class="math-step">উচ্চতা ≈ ৭ × ১.৭৩২ / ২ ≈ ৬.০৬</span></span></li>
+          </ul>
+          <div class="final-ans">উত্তর: উচ্চতা = ৭√৩ / ২ ≈ ৬.০৬ সেমি</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q5: isosceles triangle area -->
+    <div class="question q-green">
+      <div class="q-header">
+        <span class="q-number">৫</span>
+        <p class="q-text">
+          একটি সমদ্বিবাহু ত্রিভুজের দুইটি সমান সমান বাহুর মান ৫ সেমি ও অপর বাহুর মান ৬ সেমি। ক্ষেত্রফল কত?
+        </p>
+        <span class="q-marks">৫ নম্বর</span>
+      </div>
+      <div class="answer-section">
+        <div class="unlock-notice" id="lock-s2-5"><div class="big-lock">🔒</div>উত্তর রাত ১০:০০-এর পর প্রকাশিত হবে</div>
+        <div class="answer-box" id="ans-s2-5">
+          <div class="ans-label">✅ উত্তর</div>
+          <ul class="ans-step-list">
+            <li><span class="step-num">১</span><span>ভূমি (অসমান বাহু) = ৬ সেমি, সমান বাহু = ৫ সেমি। শীর্ষবিন্দু থেকে ভূমির উপর লম্ব টানলে ভূমি দুই সমান ভাগে ভাগ হয়: <span class="math-step">৬ ÷ ২ = ৩</span></span></li>
+            <li><span class="step-num">২</span><span>পিথাগোরাসের উপপাদ্য দিয়ে উচ্চতা নির্ণয়: <span class="math-step">উচ্চতা² = ৫² − ৩² = ২৫ − ৯ = ১৬</span></span></li>
+            <li><span class="step-num">৩</span><span>উচ্চতা = <span class="math-step">√১৬ = ৪</span> সেমি</span></li>
+            <li><span class="step-num">৪</span><span>ক্ষেত্রফল = <span class="math-step">(১/২) × ভূমি × উচ্চতা = (১/২) × ৬ × ৪ = ১২</span></span></li>
+          </ul>
+          <div class="final-ans">উত্তর: ক্ষেত্রফল = ১২ বর্গ সেমি</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Marks Distribution -->
+  <div class="section-card" style="animation-delay:0.4s">
+    <div class="section-title">নম্বর বিভাজন</div>
+    <table class="marks-table">
+      <thead><tr><th>প্রশ্ন</th><th>বিষয়</th><th>নম্বর</th></tr></thead>
+      <tbody>
+        <tr><td>ক১</td><td>একান্তর কোণ — সংজ্ঞা ও উদাহরণ</td><td>১</td></tr>
+        <tr><td>ক২</td><td>পিথাগোরাসের উপপাদ্য — সূত্র</td><td>১</td></tr>
+        <tr><td>ক৩</td><td>সমবাহু ত্রিভুজের ক্ষেত্রফলের সূত্র</td><td>১</td></tr>
+        <tr><td>ক৪</td><td>ভূমি ও ক্ষেত্রফল থেকে উচ্চতা নির্ণয়</td><td>১</td></tr>
+        <tr><td>ক৫</td><td>বিপ্রতীপ কোণ — সংজ্ঞা ও উদাহরণ</td><td>১</td></tr>
+        <tr><td colspan="2">ক অংশ মোট</td><td>৫</td></tr>
+        <tr><td>খ১–খ৫</td><td>কোণ, পিথাগোরাস ও ত্রিভুজের ক্ষেত্রফল (যেকোনো ৪টি)</td><td>৪ × ৫ = ২০</td></tr>
+        <tr style="font-weight:700;"><td colspan="2">সর্বমোট</td><td>২৫</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</main>
+
+<!-- ── Footer ───────────────────────────────────────────────── -->
+<footer class="site-footer">
+  <p><strong>Mojaru Math Olympiad Prep</strong> · MOPJ-35 &amp; MOPP-60 · Test 5</p>
+  <p style="margin-top:0.3rem;font-size:0.8rem;">© ২০২৬ Mojaru · শিক্ষার্থীদের জন্য তৈরি</p>
+</footer>
+
+<!-- ── Countdown + Answer Reveal Script ─────────────────────── -->
+<script>
+  // Unlock date/time: 27 August 2026, 10:00 PM Bangladesh Time (UTC+6)
+  const UNLOCK_DATE = new Date('2026-08-27T22:00:00+06:00');
+
+  const lockBanner     = document.getElementById('lockBanner');
+  const lockIcon       = document.getElementById('lockIcon');
+  const lockTitle      = document.getElementById('lockTitle');
+  const lockDesc       = document.getElementById('lockDesc');
+  const countdownEl    = document.getElementById('countdown');
+
+  const answerIds = ['1','2','3','4','5','s2-1','s2-2','s2-3','s2-4','s2-5'];
+
+  function pad(n){ return String(n).padStart(2,'0'); }
+
+  function revealAllAnswers() {
+    answerIds.forEach(id => {
+      const lockEl = document.getElementById(`lock-${id}`);
+      const ansEl  = document.getElementById(`ans-${id}`);
+      if (lockEl) lockEl.style.display = 'none';
+      if (ansEl)  ansEl.classList.add('visible');
+    });
+  }
+
+  function updateCountdown() {
+    const now  = new Date();
+    const diff = UNLOCK_DATE - now;
+
+    if (diff <= 0) {
+      countdownEl.textContent = '✅ খোলা হয়েছে';
+      lockBanner.classList.add('unlocked');
+      lockIcon.textContent  = '🔓';
+      lockTitle.textContent = 'উত্তর প্রকাশিত হয়েছে!';
+      lockDesc.textContent  = '২৭ আগস্ট ২০২৬, রাত ১০:০০-এর পরে উত্তর খোলা হয়েছে।';
+      document.querySelector('.countdown-display').style.background = 'rgba(255,255,255,0.15)';
+      revealAllAnswers();
+      clearInterval(timer);
+      return;
+    }
+
+    const hours   = Math.floor(diff / 3_600_000);
+    const minutes = Math.floor((diff % 3_600_000) / 60_000);
+    const seconds = Math.floor((diff % 60_000) / 1_000);
+
+    if (hours >= 24) {
+      const days = Math.floor(hours / 24);
+      const hrs  = hours % 24;
+      countdownEl.textContent = `${days}d ${pad(hrs)}:${pad(minutes)}:${pad(seconds)}`;
+    } else {
+      countdownEl.textContent = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+    }
+  }
+
+  updateCountdown();
+  const timer = setInterval(updateCountdown, 1000);
+</script>
+
+</body>
+</html>
